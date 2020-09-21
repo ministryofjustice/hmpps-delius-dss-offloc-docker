@@ -31,7 +31,7 @@ pipeline {
                 unstash 'ecr.repo'
                 sh '''
                     #!/bin/bash +x
-                    make build dss_version=${DSS_VERSION} image_tag_version=${IMAGE_TAG_VERSION}
+                    make build dss_version=${DSS_VERSION} image_tag_version=${image_tag_version}
                 '''
             }
         }
@@ -49,7 +49,7 @@ pipeline {
                 unstash 'ecr.repo'
                 sh '''
                     #!/bin/bash +x
-                    make push dss_version=${DSS_VERSION} image_tag_version=${IMAGE_TAG_VERSION}
+                    make push dss_version=${DSS_VERSION} image_tag_version=${image_tag_version}
                 '''
                 
             }            
@@ -68,7 +68,7 @@ pipeline {
                 unstash 'ecr.repo'
                 sh '''
                     #!/bin/bash +x
-                    make clean-local image_tag_version=${IMAGE_TAG_VERSION}
+                    make clean-local image_tag_version=${image_tag_version}
                 '''
             }
         }
