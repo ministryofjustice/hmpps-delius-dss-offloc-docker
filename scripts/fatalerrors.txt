@@ -1,0 +1,8 @@
+ FATAL 2020-September-18 08:04:04,467 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 30451
+ FATAL 2020-September-18 08:04:06,941 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 44202
+ FATAL 2020-September-18 08:04:09,608 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 61967
+ FATAL 2020-September-18 08:04:11,510 PrisonDataTransferLogger:109 - An exception occurred when parsing data in P-NOMIS file at line number 73768
+ FATAL 2020-September-18 08:04:12,252 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 78961
+ FATAL 2020-September-18 08:04:12,451 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 80539
+ FATAL 2020-September-18 08:04:12,472 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 80712
+ FATAL 2020-September-18 08:04:12,483 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 80808

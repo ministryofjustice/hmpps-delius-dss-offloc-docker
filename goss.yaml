@@ -1,0 +1,75 @@
+package:
+  openjdk8-jre:
+    installed: true
+  xmlstarlet:
+    installed: true
+command:
+  "aws --version":
+    exit-status: 0
+    stderr: 
+      - "/^aws-cli.*.Python.*.botocore.*./"
+    # stderr: []
+file:
+  # Check for presence of DSS jar files
+  /dss/encryptionutility/encryptionutility.jar:
+    exists: true
+    filetype: file
+    mode: "0640"
+    owner: tools
+    group: tools
+  /dss/fileimporter/fileimporter.jar:
+    exists: true
+    filetype: file
+    mode: "0640"
+    owner: tools
+    group: tools
+  /dss/filetransfer/filetransfer.jar:
+    exists: true
+    filetype: file
+    mode: "0640"
+    owner: tools
+    group: tools
+  # Check config files were extracted correctly
+  /dss/filetransfer/resource/FileTransfer.properties:
+    exists: true
+    filetype: file
+    mode: "0640"
+    owner: tools
+    group: tools
+  /dss/fileimporter/resource/FileImporter.properties:
+    exists: true
+    filetype: file
+    mode: "0640"
+    owner: tools
+    group: tools
+  /dss/encryptionutility/resource/encryption.properties:
+    exists: true
+    filetype: file
+    mode: "0640"
+    owner: tools
+    group: tools
+  # Check sensitive files have been decrypted - can take ~1s so add GOSS_SLEEP=1 to test cmd
+  /dss/offloc/DSSWebService.properties:
+    exists: true
+    filetype: file
+    mode: "0644"
+    owner: tools
+    group: tools
+  /dss/offloc/DSSWebService.keyfile:
+    exists: true
+    filetype: file
+    mode: "0644"
+    owner: tools
+    group: tools
+  /dss/offloc/HMPSServerDetails.properties:
+    exists: true
+    filetype: file
+    mode: "0644"
+    owner: tools
+    group: tools
+  /dss/offloc/HMPSServerDetails.keyfile:
+    exists: true
+    filetype: file
+    mode: "0644"
+    owner: tools
+    group: tools

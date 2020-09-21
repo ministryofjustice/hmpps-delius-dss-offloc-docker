@@ -1,0 +1,101 @@
+message
+/dss_scripts/dss_run.sh: line 16: [: -Xms1024m: binary operator expected
+Fetching DSS credentials from SSM...
+Fetching PNOMIS credentials from SSM...
+Credentials retrieved successfully.
+Updating dsswebserver_config...
+Updating hmpsserver_config...
+Updating encryptiontool_config...
+Updating filetransfer_config...
+Updating fileimporter_config...
+" INFO  2020-September-18 08:02:30,358 PrisonDataTransferLogger:121 - Starting File Transfer application."
+" INFO  2020-September-18 08:02:30,360 PrisonDataTransferLogger:121 - Validating FileTransfer.properties configuration file..."
+" INFO  2020-September-18 08:02:30,544 PrisonDataTransferLogger:121 - FileTransfer.properties successfully validated - beginning processing."
+" INFO  2020-September-18 08:02:33,148 PrisonDataTransferLogger:121 - Writing temporary zip file."
+" INFO  2020-September-18 08:03:47,970 PrisonDataTransferLogger:121 - Decompressing pNOMIS file."
+" INFO  2020-September-18 08:03:50,141 PrisonDataTransferLogger:121 - Running OFFLOC file check for PNOMIS."
+" INFO  2020-September-18 08:03:51,979 OfflocFileCheck:137 - "
+###############################################################
+ No Invalid Data Type Issues were found.
+###############################################################
+" INFO  2020-September-18 08:03:51,979 OfflocFileCheck:140 - Completed data type validation."
+" INFO  2020-September-18 08:03:51,979 OfflocFileCheck:154 - Attempting Auto Correct"
+" INFO  2020-September-18 08:03:55,508 PrisonDataTransferLogger:121 - Parsing Prison Data File and running record level validation checks"
+###############################################################
+" FATAL 2020-September-18 08:04:04,467 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 30451"
+uk.co.bconline.ndelius.dss.filetransfer.exception.FileTransferException: A date field was not in the expected format of dd/mm/yyyy
+"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:888)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.processRecord(ConsolidatedPrisonFileWriterImpl.java:823)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parsePrisonDataFile(ConsolidatedPrisonFileWriterImpl.java:548)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.execute(FileTransfer.java:305)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.main(FileTransfer.java:133)"
+"Caused by: java.text.ParseException: Unparseable date: ""AwaitingInduction"",""HLI-OTHER-STAYONWING"",""13"",""45"",""16"",""45""~""AwaitingInduction"",""HLI-OTHER-STAYONWING"",""08"",""30"",""11"",""45"""
+"	at java.text.DateFormat.parse(DateFormat.java:366)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:878)"
+"	... 4 more"
+" FATAL 2020-September-18 08:04:06,941 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 44202"
+uk.co.bconline.ndelius.dss.filetransfer.exception.FileTransferException: A date field was not in the expected format of dd/mm/yyyy
+"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:888)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.processRecord(ConsolidatedPrisonFileWriterImpl.java:823)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parsePrisonDataFile(ConsolidatedPrisonFileWriterImpl.java:548)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.execute(FileTransfer.java:305)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.main(FileTransfer.java:133)"
+"Caused by: java.text.ParseException: Unparseable date: ""R-ROM""~""V-VI""~""P-PC2""~""P-PVN""~""R-ROH""~""R-RPB""~""R-RLO""~""X-XNR""~""O-OISFL"""
+"	at java.text.DateFormat.parse(DateFormat.java:366)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:878)"
+"	... 4 more"
+" FATAL 2020-September-18 08:04:09,608 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 61967"
+uk.co.bconline.ndelius.dss.filetransfer.exception.FileTransferException: A date field was not in the expected format of dd/mm/yyyy
+"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:888)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.processRecord(ConsolidatedPrisonFileWriterImpl.java:823)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parsePrisonDataFile(ConsolidatedPrisonFileWriterImpl.java:548)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.execute(FileTransfer.java:305)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.main(FileTransfer.java:133)"
+"Caused by: java.text.ParseException: Unparseable date: ""RMFRMC"""
+"	at java.text.DateFormat.parse(DateFormat.java:366)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:878)"
+"	... 4 more"
+" FATAL 2020-September-18 08:04:11,510 PrisonDataTransferLogger:109 - An exception occurred when parsing data in P-NOMIS file at line number 73768"
+java.lang.StringIndexOutOfBoundsException: String index out of range: -1
+"	at java.lang.String.substring(String.java:1967)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.removeQuotes(ConsolidatedPrisonFileWriterImpl.java:941)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parsePrisonDataFile(ConsolidatedPrisonFileWriterImpl.java:513)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.execute(FileTransfer.java:305)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.main(FileTransfer.java:133)"
+" FATAL 2020-September-18 08:04:12,252 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 78961"
+uk.co.bconline.ndelius.dss.filetransfer.exception.FileTransferException: A date field was not in the expected format of dd/mm/yyyy
+"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:888)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.processRecord(ConsolidatedPrisonFileWriterImpl.java:823)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parsePrisonDataFile(ConsolidatedPrisonFileWriterImpl.java:548)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.execute(FileTransfer.java:305)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.main(FileTransfer.java:133)"
+"Caused by: java.text.ParseException: Unparseable date: ""Imprisonment"""
+"	at java.text.DateFormat.parse(DateFormat.java:366)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:878)"
+"	... 4 more"
+" FATAL 2020-September-18 08:04:12,451 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 80539"
+uk.co.bconline.ndelius.dss.filetransfer.exception.FileTransferException: A date field was not in the expected format of dd/mm/yyyy
+"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:888)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.processRecord(ConsolidatedPrisonFileWriterImpl.java:823)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parsePrisonDataFile(ConsolidatedPrisonFileWriterImpl.java:548)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.execute(FileTransfer.java:305)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.main(FileTransfer.java:133)"
+"Caused by: java.text.ParseException: Unparseable date: ""Unemployedprisoners"",""WWI-OTHER-UNEMPLOYED"",""07"",""30"",""11"",""30""~""Unemployedprisoners"",""WWI-OTHER-UNEMPLOYED"",""13"",""15"",""16"",""30"""
+"	at java.text.DateFormat.parse(DateFormat.java:366)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:878)"
+"	... 4 more"
+" FATAL 2020-September-18 08:04:12,472 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 80712"
+uk.co.bconline.ndelius.dss.filetransfer.exception.FileTransferException: A date field was not in the expected format of dd/mm/yyyy
+"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:888)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.processRecord(ConsolidatedPrisonFileWriterImpl.java:823)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parsePrisonDataFile(ConsolidatedPrisonFileWriterImpl.java:548)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.execute(FileTransfer.java:305)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.main(FileTransfer.java:133)"
+"Caused by: java.text.ParseException: Unparseable date: ""WaitingList"",""WWI-OTHER-WAITINGLIST"",""20"",""00"",""22"",""00"""
+"	at java.text.DateFormat.parse(DateFormat.java:366)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:878)"
+"	... 4 more"
+" FATAL 2020-September-18 08:04:12,483 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 80808"
+uk.co.bconline.ndelius.dss.filetransfer.exception.FileTransferException: A date field was not in the expected format of dd/mm/yyyy
+"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:888)"
+"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.processRecord(ConsolidatedPrisonFileWriterImpl.java:823)"
