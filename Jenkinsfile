@@ -7,6 +7,7 @@ pipeline {
         docker_image = "hmpps/dss"
         aws_region = 'eu-west-2'
         ecr_repo = ''
+        image_tag_version = '3.1' // temp for testing
     }
 
     stages {
@@ -30,7 +31,7 @@ pipeline {
                 unstash 'ecr.repo'
                 sh '''
                     #!/bin/bash +x
-                    make build dss_version=${DSS_VERSION}
+                    make build dss_version=${DSS_VERSION} image_tag_version=${IMAGE_TAG_VERSION}
                 '''
             }
         }
@@ -48,7 +49,7 @@ pipeline {
                 unstash 'ecr.repo'
                 sh '''
                     #!/bin/bash +x
-                    make push dss_version=${DSS_VERSION}
+                    make push dss_version=${DSS_VERSION} image_tag_version=${IMAGE_TAG_VERSION}
                 '''
                 
             }            
@@ -67,7 +68,7 @@ pipeline {
                 unstash 'ecr.repo'
                 sh '''
                     #!/bin/bash +x
-                    make clean-local dss_version=${DSS_VERSION}
+                    make clean-local image_tag_version=${IMAGE_TAG_VERSION}
                 '''
             }
         }
