@@ -43,5 +43,5 @@ clean-remote:
 clean-local: ecr_repo := $(shell cat ./ecr.repo)
 clean-local:
 	docker rmi ${ecr_repo}:latest
-	docker rmi ${ecr_repo}:${dss_version}
+	docker rmi ${ecr_repo}:${image_tag_version}
 	rm -f ./ecr.repo
