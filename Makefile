@@ -20,7 +20,7 @@ ecr-login:
 build: ecr_repo := $(shell cat ./ecr.repo) 
 build:
 	$(info Build of repo $(ecr_repo))
-	docker build -t $(ecr_repo) --build-arg DSS_VERSION=${dss_version}  .
+	docker build -t $(ecr_repo) --build-arg DSS_VERSION=${dss_version} --build-arg IMAGE_TAG_VERSION=${image_tag_version} .
 
 tag: ecr_repo := $(shell cat ./ecr.repo)
 tag:
@@ -33,8 +33,8 @@ test:
 
 push: ecr_repo := $(shell cat ./ecr.repo)
 push:
-	docker tag  ${ecr_repo} ${ecr_repo}:${dss_version}
-	docker push ${ecr_repo}:${dss_version}
+	docker tag  ${ecr_repo} ${ecr_repo}:${image_tag_version}
+	docker push ${ecr_repo}:${image_tag_version}
 
 clean-remote: untagged_images := $(shell aws ecr list-images --region $(aws_region) --repository-name "$(image)" --filter "tagStatus=UNTAGGED" --query 'imageIds[*]' --output json)
 clean-remote:
