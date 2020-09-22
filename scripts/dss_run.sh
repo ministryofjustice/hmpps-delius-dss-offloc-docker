@@ -192,7 +192,7 @@ fi
 # If build flag is passed, then do not proceed with actually running the dss batch task
 if [ "$DSS_BUILDTESTMODE" == "true" ]; then
     echo "DSS_SUCCESS Ending run as build flag passed. Exiting..."
-    sleep 10
+    sleep 30
     exit 0
 fi
 
