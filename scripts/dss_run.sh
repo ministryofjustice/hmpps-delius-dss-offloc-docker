@@ -194,6 +194,11 @@ fi
 cd $DSS_ROOT/filetransfer 
 java -cp filetransfer.jar:resource uk.co.bconline.ndelius.dss.filetransfer.FileTransfer
 FTRESULT=$?
+# Wait for FI to finish
+while [ $(ps -o pid,args | grep "fileimporter.jar" | grep -v grep | awk '{print $1}'|wc -l) -gt 0 ] ; do 
+    echo "Waiting for FileImporter process to finish"; 
+    sleep 10; 
+done
 
 # check filetransfer was successful - there's a file
 OFFLOCFILEPATH=$(grep "^offloc.file.path" /dss_config/FileTransfer.properties | cut -d '=' -f 2)
@@ -206,13 +211,8 @@ else
     err_exit FileTransfer 2
 fi
 
-# Wait for FI to finish
-while [ $(ps -o pid,args | grep "fileimporter.jar" | grep -v grep | awk '{print $1}'|wc -l) -gt 0 ] ; do 
-    echo "Waiting for FileImporter process to finish"; 
-    sleep 10; 
-done
 # FileTransfer logs are output to stdout/stderr, but the child FileImporter logs are only written to file - print it for Cloudwatch
-echo "Checking FileImporter log file '/dss/fileimporter/fileimporter.log' exists."
+echo "Checking FileImporter log file '/dss/fileimporter/fileimporter.log' existx."
 if test -f "/dss/fileimporter/fileimporter.log"; then
     echo "/dss/fileimporter/fileimporter.log exists."
     echo "FileImporter Logs follow:"
