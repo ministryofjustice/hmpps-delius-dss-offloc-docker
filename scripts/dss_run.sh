@@ -28,8 +28,9 @@ function dsswebserver_config {
     echo 'Fetch per env SSM Creds - password'
     sed -i "s/password=___CHANGEME___/password=$2/g" $DSS_ROOT/offloc/DSSWebService.properties.template
     
-    echo '$DSS_ROOT/offloc/DSSWebService.properties.template'
-    cat $DSS_ROOT/offloc/DSSWebService.properties.template
+    echo "$DSS_ROOT/offloc/DSSWebService.properties.template"
+    cat $DSS_ROOT/offloc/DSSWebService.properties.template | grep url
+    cat $DSS_ROOT/offloc/DSSWebService.properties.template | grep username
 }
 
 function hmpsserver_config {
@@ -134,7 +135,8 @@ fi
 # env
 
 # Only fetch params if not in build environment
-if [ -z $DSS_TESTMODE ]; then
+echo "DSS_TESTMODE = $DSS_TESTMODE"
+if [ $DSS_TESTMODE -eq false ]; then
     # Get list of params in this region that match predetermined path
     echo "Fetching DSS credentials from SSM..."
     DSS_PARAMS_JSON=$(aws ssm get-parameters --names "/$DSS_ENVIRONMENT/$DSS_PROJECT/apacheds/apacheds/dss_user" "/$DSS_ENVIRONMENT/$DSS_PROJECT/apacheds/apacheds/dss_user_password" --with-decryption --region $DSS_AWSREGION)
@@ -157,7 +159,7 @@ if [ -z $DSS_TESTMODE ]; then
     PNOMIS_WEB_PASSWORD=$(echo $PNOMIS_PARAMS_JSON | jq -r '.Parameters[] | select(.Name | contains("pnomis_web_password"))| .Value ')
     echo "Credentials retrieved successfully."
 else
-    echo "$DSS_TESTMODE is not "
+    echo "DSS_TESTMODE is false so skipping fetch of parameter store parameters."
 fi
 
 # Generate random 16byte Initialisation vector
