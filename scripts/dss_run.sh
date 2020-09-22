@@ -70,6 +70,7 @@ function filetransfer_config {
     
     echo "$DSS_ROOT/filetransfer/resource/FileTransfer.properties"
     cat $CONF
+}
 
 function fileimporter_config {
     echo 'fileimporter_config'
