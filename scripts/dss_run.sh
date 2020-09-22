@@ -19,21 +19,29 @@ function dsswebserver_config {
     # Credentials will be pulled from SSM
     if [ !  -z $DSS_DSSWEBSERVERURL ]; then
         # URL requires a diff seperator for sed
-        sed -i "s/url=https:\/\/localhost:8080/url=$DSS_DSSWEBSERVERURL/g" $DSS_ROOT/offloc/DSSWebService.properties.template
+        # 's/url=https:\/\/localhost:8080/url=https:\/\/interface-app-internal.stage.delius.probation.hmpps.dsd.io\/NDeliusDSS\/UpdateOffender/g'
+        echo "updating dsswebserver url=$DSS_DSSWEBSERVERURL"
+        sed -i "s#url=https://localhost:8080#url=$DSS_DSSWEBSERVERURL#g" $DSS_ROOT/offloc/DSSWebService.properties.template
     fi
-    # # Fetch per env SSM Creds
+    echo 'Fetch per env SSM Creds - username'
     sed -i "s/username=___CHANGEME___/username=$1/g" $DSS_ROOT/offloc/DSSWebService.properties.template
+    echo 'Fetch per env SSM Creds - password'
     sed -i "s/password=___CHANGEME___/password=$2/g" $DSS_ROOT/offloc/DSSWebService.properties.template
+    
+    echo '$DSS_ROOT/offloc/DSSWebService.properties.template'
+    cat $DSS_ROOT/offloc/DSSWebService.properties.template
 }
 
 function hmpsserver_config {
     echo 'hmpsserver_config'
     if [ !  -z $DSS_HMPSSERVERURL ]; then
         # URL requires a diff seperator for sed
+        echo "updating hmpsserver url=$DSS_HMPSSERVERURL"
         sed -i "s#url=https:\/\/localhost:8080#url=$DSS_HMPSSERVERURL#g" $DSS_ROOT/offloc/HMPSServerDetails.properties.template
     fi
-    # Fetch per env SSM Creds
+    echo 'Fetch per env SSM Creds - username'
     sed -i "s/username=___CHANGEME___/username=$1/g" $DSS_ROOT/offloc/HMPSServerDetails.properties.template
+    echo 'Fetch per env SSM Creds - password'
     sed -i "s/password=___CHANGEME___/password=$2/g" $DSS_ROOT/offloc/HMPSServerDetails.properties.template
 }
 
@@ -148,6 +156,8 @@ if [ -z $DSS_TESTMODE ]; then
     PNOMIS_WEB_USER=$(echo $PNOMIS_PARAMS_JSON | jq -r '.Parameters[] | select(.Name | contains("pnomis_web_user"))| .Value ')
     PNOMIS_WEB_PASSWORD=$(echo $PNOMIS_PARAMS_JSON | jq -r '.Parameters[] | select(.Name | contains("pnomis_web_password"))| .Value ')
     echo "Credentials retrieved successfully."
+else
+    echo "$DSS_TESTMODE is not "
 fi
 
 # Generate random 16byte Initialisation vector
