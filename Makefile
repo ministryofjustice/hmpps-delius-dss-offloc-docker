@@ -29,7 +29,7 @@ tag:
 
 test: ecr_repo := $(shell cat ./ecr.repo)
 test:
-	bash -c "GOSS_SLEEP=5 dgoss run -e DSS_BUILDTESTMODE=true $(ecr_repo):latest"
+	bash -c "GOSS_SLEEP=5 dgoss run -e DSS_TESTMODE=true $(ecr_repo):latest"
 
 push: ecr_repo := $(shell cat ./ecr.repo)
 push:
