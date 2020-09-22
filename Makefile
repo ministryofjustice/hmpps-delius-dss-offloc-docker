@@ -20,12 +20,14 @@ ecr-login:
 build: ecr_repo := $(shell cat ./ecr.repo) 
 build:
 	$(info Build of repo $(ecr_repo))
-	docker build -t $(ecr_repo) --build-arg DSS_VERSION=${dss_version} --build-arg IMAGE_TAG_VERSION=${image_tag_version} .
+	docker build -t $(ecr_repo) --build-arg DSS_VERSION=${dss_version} .
 
 tag: ecr_repo := $(shell cat ./ecr.repo)
 tag:
 	$(info Tag repo $(ecr_repo) $(dss_version))
 	docker tag $(ecr_repo) $(ecr_repo):$(dss_version)
+	$(info Tag repo $(ecr_repo) $(image_tag_version))
+	docker tag $(ecr_repo) $(ecr_repo):$(image_tag_version)
 
 test: ecr_repo := $(shell cat ./ecr.repo)
 test:
