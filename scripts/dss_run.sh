@@ -132,11 +132,9 @@ if [ -z $DSS_PROJECT ]; then
     DSS_PROJECT="delius"
 fi
 
-# env
-
 # Only fetch params if not in build environment
-#echo "DSS_TESTMODE = $DSS_TESTMODE"
-#if [ ! $DSS_TESTMODE  ]; then
+echo "DSS_BUILDTESTMODE = $DSS_BUILDTESTMODE"
+if [ -z $DSS_BUILDTESTMODE ]; then
     # Get list of params in this region that match predetermined path
     echo "Fetching DSS credentials from SSM..."
     DSS_PARAMS_JSON=$(aws ssm get-parameters --names "/$DSS_ENVIRONMENT/$DSS_PROJECT/apacheds/apacheds/dss_user" "/$DSS_ENVIRONMENT/$DSS_PROJECT/apacheds/apacheds/dss_user_password" --with-decryption --region $DSS_AWSREGION)
@@ -158,13 +156,10 @@ fi
     PNOMIS_WEB_USER=$(echo $PNOMIS_PARAMS_JSON | jq -r '.Parameters[] | select(.Name | contains("pnomis_web_user"))| .Value ')
     PNOMIS_WEB_PASSWORD=$(echo $PNOMIS_PARAMS_JSON | jq -r '.Parameters[] | select(.Name | contains("pnomis_web_password"))| .Value ')
     echo "Credentials retrieved successfully."
-# else
-#     echo "DSS_TESTMODE is $DSS_TESTMODE so skipping fetch of parameter store parameters."
-# fi
+fi
 
 # Generate random 16byte Initialisation vector
 IV=$(strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 16 | tr -d '\n'; echo)
-echo $IV
 
 # Set config values
 dsswebserver_config $DSS_WEB_USER $DSS_WEB_PASSWORD
@@ -189,7 +184,7 @@ elif [ ! -f $DSS_ROOT/offloc/HMPSServerDetails.keyfile ] && [ ! $DSS_ROOT/offloc
 fi
 
 # If build flag is passed, then do not proceed with actually running the dss batch task
-if [ "$DSS_TESTMODE" == "true" ]; then
+if [ "$DSS_BUILDTESTMODE" == "true" ]; then
     echo "DSS_SUCCESS Ending run as build flag passed. Exiting..."
     sleep 10
     exit 0
