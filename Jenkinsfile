@@ -1,13 +1,14 @@
 pipeline {
     agent { label "jenkins_slave" }
     parameters {
-        choice(choices: [ '4.3.1', '4.2.9', '4.2.9.4', '4.2.8', '4.2.7', '4.2.7', '4.2.6', '4.1.8.4', '4.1.7.3', '3.9.6'], description: 'Specify DSS Version to Build', name: 'DSS_VERSION')
+        choice(choices: [ '4.3.1', '4.2.9', '4.2.9.4', '4.2.8', '4.2.7', '4.2.7', '4.2.6', '4.1.8.4', '4.1.7.3', '3.9.6'], description: 'Specify DSS Version to Build', name: 'DSS_VERSION').
+        string(name: 'IMAGE_TAG_VERSION', defaultValue: '3.1', description: 'Tag applied to hmpps/dss container in ECR')
     }
     environment {
         docker_image = "hmpps/dss"
         aws_region = 'eu-west-2'
         ecr_repo = ''
-        image_tag_version = '3.1' // temp for testing
+        // image_tag_version = '3.1' // temp for testing
     }
 
     stages {
@@ -31,7 +32,7 @@ pipeline {
                 unstash 'ecr.repo'
                 sh '''
                     #!/bin/bash +x
-                    make build dss_version=${DSS_VERSION} image_tag_version=${image_tag_version}
+                    make build dss_version=${DSS_VERSION} image_tag_version=${IMAGE_TAG_VERSION}
                 '''
             }
         }
@@ -49,7 +50,7 @@ pipeline {
                 unstash 'ecr.repo'
                 sh '''
                     #!/bin/bash +x
-                    make push dss_version=${DSS_VERSION} image_tag_version=${image_tag_version}
+                    make push dss_version=${DSS_VERSION} image_tag_version=${IMAGE_TAG_VERSION}
                 '''
                 
             }            
@@ -68,7 +69,7 @@ pipeline {
                 unstash 'ecr.repo'
                 sh '''
                     #!/bin/bash +x
-                    make clean-local image_tag_version=${image_tag_version}
+                    make clean-local image_tag_version=${IMAGE_TAG_VERSION}
                 '''
             }
         }
