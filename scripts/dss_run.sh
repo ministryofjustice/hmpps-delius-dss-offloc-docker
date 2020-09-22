@@ -212,8 +212,15 @@ while [ $(ps -o pid,args | grep "fileimporter.jar" | grep -v grep | awk '{print 
     sleep 10; 
 done
 # FileTransfer logs are output to stdout/stderr, but the child FileImporter logs are only written to file - print it for Cloudwatch
-echo "FileImporter Logs follow:"
-cat /dss/fileimporter/fileimporter.log
+echo "Checking FileImporter log file '/dss/fileimporter/fileimporter.log' exists."
+if test -f "/dss/fileimporter/fileimporter.log"; then
+    echo "/dss/fileimporter/fileimporter.log exists."
+    echo "FileImporter Logs follow:"
+    cat /dss/fileimporter/fileimporter.log
+else
+    echo "'/dss/fileimporter/fileimporter.log' does not exist.There was an issue with file transfer."
+    err_exit FileImport 2
+fi
 
 echo "FT Result == $FTRESULT"
 if [ $FTRESULT -eq 0 ]; then
