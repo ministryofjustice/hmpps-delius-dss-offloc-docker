@@ -136,7 +136,7 @@ fi
 
 # Only fetch params if not in build environment
 echo "DSS_TESTMODE = $DSS_TESTMODE"
-if [ $DSS_TESTMODE -eq false ]; then
+if [ $DSS_TESTMODE -eq "false" ]; then
     # Get list of params in this region that match predetermined path
     echo "Fetching DSS credentials from SSM..."
     DSS_PARAMS_JSON=$(aws ssm get-parameters --names "/$DSS_ENVIRONMENT/$DSS_PROJECT/apacheds/apacheds/dss_user" "/$DSS_ENVIRONMENT/$DSS_PROJECT/apacheds/apacheds/dss_user_password" --with-decryption --region $DSS_AWSREGION)
