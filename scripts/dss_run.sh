@@ -136,7 +136,7 @@ fi
 
 # Only fetch params if not in build environment
 echo "DSS_TESTMODE = $DSS_TESTMODE"
-if [ $DSS_TESTMODE -eq "false" ]; then
+if [ ! $DSS_TESTMODE  ]; then
     # Get list of params in this region that match predetermined path
     echo "Fetching DSS credentials from SSM..."
     DSS_PARAMS_JSON=$(aws ssm get-parameters --names "/$DSS_ENVIRONMENT/$DSS_PROJECT/apacheds/apacheds/dss_user" "/$DSS_ENVIRONMENT/$DSS_PROJECT/apacheds/apacheds/dss_user_password" --with-decryption --region $DSS_AWSREGION)
@@ -159,7 +159,7 @@ if [ $DSS_TESTMODE -eq "false" ]; then
     PNOMIS_WEB_PASSWORD=$(echo $PNOMIS_PARAMS_JSON | jq -r '.Parameters[] | select(.Name | contains("pnomis_web_password"))| .Value ')
     echo "Credentials retrieved successfully."
 else
-    echo "DSS_TESTMODE is false so skipping fetch of parameter store parameters."
+    echo "DSS_TESTMODE is true so skipping fetch of parameter store parameters."
 fi
 
 # Generate random 16byte Initialisation vector
