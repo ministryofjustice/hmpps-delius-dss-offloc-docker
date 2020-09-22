@@ -67,11 +67,16 @@ function filetransfer_config {
         sed -i "s/test.offloc.file.path=\/dss_artefacts\/test_file.zip/test.offloc.file.path=\/dss_artefacts\/$DSS_TESTFILE/g" $CONF
     fi
     sed -i "s/___DSSIV___/$1/g" $CONF
-}
+    
+    echo "$DSS_ROOT/filetransfer/resource/FileTransfer.properties"
+    cat $CONF
 
 function fileimporter_config {
     echo 'fileimporter_config'
     sed -i "s/___DSSIV___/$1/g" $DSS_ROOT/fileimporter/resource/FileImporter.properties
+
+    echo "$DSS_ROOT/filetransfer/resource/FileImporter.properties"
+    cat $CONF
 }
 
 function check_log_errors {
