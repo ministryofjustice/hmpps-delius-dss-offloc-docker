@@ -200,17 +200,6 @@ fi
 cd $DSS_ROOT/filetransfer 
 java -cp filetransfer.jar:resource uk.co.bconline.ndelius.dss.filetransfer.FileTransfer
 FTRESULT=$?
-# check filetransfer was successful - there's a file
-OFFLOCFILEPATH=$(grep "^offloc.file.path" /dss_config/FileTransfer.properties | cut -d '=' -f 2)
-
-echo "Checking file download '$OFFLOCFILEPATH' exists to confirm if downloaded offloc file exists.."
-ls -al $OFFLOCFILEPATH
-if test -f "$OFFLOCFILEPATH"; then
-    echo "$OFFLOCFILEPATH exists."
-else
-    echo "'$OFFLOCFILEPATH' does not exists so there was an issue with file transfer."
-    err_exit FileTransfer 2
-fi
 
 # Wait for FI to finish (this process is started by FileTransfer app)
 while [ $(ps -o pid,args | grep "fileimporter.jar" | grep -v grep | awk '{print $1}'|wc -l) -gt 0 ] ; do 
@@ -218,8 +207,20 @@ while [ $(ps -o pid,args | grep "fileimporter.jar" | grep -v grep | awk '{print 
     sleep 10; 
 done
 
+# # check filetransfer was successful - there's a file
+# OFFLOCFILEPATH=$(grep "^offloc.file.path" /dss_config/FileTransfer.properties | cut -d '=' -f 2)
+
+# echo "Checking file download '$OFFLOCFILEPATH' exists to confirm if downloaded offloc file exists.."
+# ls -al $OFFLOCFILEPATH
+# if test -f "$OFFLOCFILEPATH"; then
+#     echo "$OFFLOCFILEPATH exists."
+# else
+#     echo "'$OFFLOCFILEPATH' does not exists so there was an issue with file transfer."
+#     err_exit FileTransfer 2
+# fi
+
 # FileTransfer logs are output to stdout/stderr, but the child FileImporter logs are only written to file - print it for Cloudwatch
-echo "Checking FileImporter log file '/dss/fileimporter/fileimporter.log' existx."
+echo "Checking FileImporter log file '/dss/fileimporter/fileimporter.log' exists."
 if test -f "/dss/fileimporter/fileimporter.log"; then
     echo "/dss/fileimporter/fileimporter.log exists."
     echo "FileImporter Logs follow:"
