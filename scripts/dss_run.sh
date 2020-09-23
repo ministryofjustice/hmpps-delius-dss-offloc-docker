@@ -1,5 +1,21 @@
 #!/bin/bash
 
+DSS_ROOT=/dss
+# Use keyword flags in exit codes to allow Cloudwatch Log Metrics to be defined
+SUCCESS_FLAG="DSS_SUCCESS"
+ERROR_FLAG="DSS_ERROR"
+
+if [ -z $DSS_AWSREGION ]; then
+    DSS_AWSREGION="eu-west-2"
+fi
+
+if [ -z $DSS_PROJECT ]; then
+    DSS_PROJECT="delius"
+fi
+
+if [ -z $JAVA_OPTS ]; then
+    JAVA_OPTS="-Xms128m -Xmx256m"
+fi
 
 function err_exit {
     echo 'err_exit'
@@ -19,9 +35,8 @@ function dsswebserver_config {
     # Credentials will be pulled from SSM
     if [ !  -z $DSS_DSSWEBSERVERURL ]; then
         # URL requires a diff seperator for sed
-        # 's/url=https:\/\/localhost:8080/url=https:\/\/interface-app-internal.stage.delius.probation.hmpps.dsd.io\/NDeliusDSS\/UpdateOffender/g'
         echo "updating dsswebserver url=$DSS_DSSWEBSERVERURL"
-        sed -i "s#url=https://localhost:8080#url=$DSS_DSSWEBSERVERURL#g" $DSS_ROOT/offloc/DSSWebService.properties.template
+        sed -i "s#url=https:\/\/localhost:8080#url=$DSS_DSSWEBSERVERURL#g" $DSS_ROOT/offloc/DSSWebService.properties.template
     fi
     echo 'Fetch per env SSM Creds - username'
     sed -i "s/username=___CHANGEME___/username=$1/g" $DSS_ROOT/offloc/DSSWebService.properties.template
@@ -37,8 +52,7 @@ function hmpsserver_config {
     echo 'hmpsserver_config'
     if [ !  -z $DSS_HMPSSERVERURL ]; then
         # URL requires a diff seperator for sed
-        echo "updating hmpsserver url=$DSS_HMPSSERVERURL"
-        sed -i "s#url=https:\/\/localhost:8080#url=$DSS_HMPSSERVERURL#g" $DSS_ROOT/offloc/HMPSServerDetails.properties.template
+        sed -i "s#url=https:\/\/localhost:8080/testfile.zip#url=$DSS_HMPSSERVERURL#g" $DSS_ROOT/offloc/HMPSServerDetails.properties.template
     fi
     echo 'Fetch per env SSM Creds - username'
     sed -i "s/username=___CHANGEME___/username=$1/g" $DSS_ROOT/offloc/HMPSServerDetails.properties.template
@@ -63,7 +77,6 @@ function filetransfer_config {
         sed -i "s/test.mode=false/test.mode=$DSS_TESTMODE/g" $CONF
     fi
     if [ ! -z $DSS_TESTFILE ]; then 
-        # sed -i "s/test.offloc.file.path/test.mode=$DSS_TESTFILE/g" $CONF
         sed -i "s/test.offloc.file.path=\/dss_artefacts\/test_file.zip/test.offloc.file.path=\/dss_artefacts\/$DSS_TESTFILE/g" $CONF
     fi
     sed -i "s/___DSSIV___/$1/g" $CONF
@@ -124,20 +137,6 @@ function check_log_errors {
     fi
 }
 
-# function main {}
-DSS_ROOT=/dss
-# Use keyword flags in exit codes to allow Cloudwatch Log Metrics to be defined
-SUCCESS_FLAG="DSS_SUCCESS"
-ERROR_FLAG="DSS_ERROR"
-
-if [ -z $DSS_AWSREGION ]; then  
-    DSS_AWSREGION="eu-west-2"
-fi
-
-if [ -z $DSS_PROJECT ]; then
-    DSS_PROJECT="delius"
-fi
-
 # Only fetch params if not in build environment
 echo "DSS_BUILDTESTMODE = $DSS_BUILDTESTMODE"
 if [ -z $DSS_BUILDTESTMODE ]; then
@@ -168,10 +167,15 @@ fi
 IV=$(strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 16 | tr -d '\n'; echo)
 
 # Set config values
+echo "Updating dsswebserver_config..."
 dsswebserver_config $DSS_WEB_USER $DSS_WEB_PASSWORD
+echo "Updating hmpsserver_config..."
 hmpsserver_config $PNOMIS_WEB_USER $PNOMIS_WEB_PASSWORD
+echo "Updating encryptiontool_config..."
 encryptiontool_config $IV
+echo "Updating filetransfer_config..."
 filetransfer_config $IV
+echo "Updating fileimporter_config..."
 fileimporter_config $IV
 
 # Encrypt sensitive files
@@ -197,8 +201,8 @@ if [ "$DSS_BUILDTESTMODE" == "true" ]; then
 fi
 
 # Run the File transfer first
-cd $DSS_ROOT/filetransfer 
-java -cp filetransfer.jar:resource uk.co.bconline.ndelius.dss.filetransfer.FileTransfer
+cd $DSS_ROOT/filetransfer
+java $JAVA_OPTS -Dcom.sun.jndi.ldap.object.disableEndpointIdentification=true -cp filetransfer.jar:resource uk.co.bconline.ndelius.dss.filetransfer.FileTransfer
 FTRESULT=$?
 
 # Wait for FI to finish (this process is started by FileTransfer app)
@@ -233,7 +237,7 @@ fi
 echo "FT Result == $FTRESULT"
 if [ $FTRESULT -eq 0 ]; then
     echo "Checking logs for errors..."
-    # check_log_errors /dss/filetransfer/filetransfer.log
+    check_log_errors /dss/filetransfer/filetransfer.log
     check_log_errors /dss/fileimporter/fileimporter.log
 else
     err_exit FileTransfer $FTRESULT
