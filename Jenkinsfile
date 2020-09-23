@@ -1,7 +1,7 @@
 pipeline {
     agent { label "jenkins_slave" }
     parameters {
-        choice(choices: [ '4.3.1', '4.2.9', '4.2.9.4', '4.2.8', '4.2.7', '4.2.7', '4.2.6', '4.1.8.4', '4.1.7.3', '3.9.6'], description: 'Specify DSS Version to Build', name: 'DSS_VERSION')
+        choice(choices: [ '4.3.1', '4.2.9', '4.2.9.4', '4.2.8', '4.2.7', '4.2.7', '4.2.6', '4.1.8.4', '4.1.7.3', '3.9.6', '3.0'], description: 'Specify DSS Version to Build', name: 'DSS_VERSION')
         string(name: 'IMAGE_TAG_VERSION', defaultValue: '3.1', description: 'Tag applied to hmpps/dss container in ECR')
     }
     environment {
