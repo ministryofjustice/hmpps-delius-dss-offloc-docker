@@ -27,15 +27,6 @@ pipeline {
                 stash includes: 'ecr.repo', name: 'ecr.repo'
             }
         }
-        stage('Remove Unused docker image to clear build cache') {
-            steps{
-                unstash 'ecr.repo'
-                sh '''
-                    #!/bin/bash +x
-                    make clean-local image_tag_version=${IMAGE_TAG_VERSION}
-                '''
-            }
-        }
         stage('Build Docker image') {
            steps {
                 unstash 'ecr.repo'

@@ -60,3 +60,4 @@ chmod 0640 /dss/fileimporter/fileimporter.jar
 chmod 0640 /dss/fileimporter/resource/FileImporter.properties
 
 exit 0
+  
