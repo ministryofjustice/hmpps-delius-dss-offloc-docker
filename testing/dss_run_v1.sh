@@ -18,50 +18,38 @@ if [ -z $JAVA_OPTS ]; then
 fi
 
 function err_exit {
-    echo 'err_exit'
     echo "$ERROR_FLAG Task $1 exited with code $2";
     exit $2;
 }
 
 # Override config parameters if container launced with corresponding ENVVARS (all have prefix DSS_)
 function encryptiontool_config {
-    echo 'encryptiontool_config'
     sed -i "s/___DSSIV___/$1/g" $DSS_ROOT/encryptionutility/resource/encryption.properties
 }
 
 function dsswebserver_config {
-    echo 'dsswebserver_config'
     # DSSWebServer Config
     # Credentials will be pulled from SSM
     if [ !  -z $DSS_DSSWEBSERVERURL ]; then
         # URL requires a diff seperator for sed
-        echo "updating dsswebserver url=$DSS_DSSWEBSERVERURL"
         sed -i "s#url=https:\/\/localhost:8080#url=$DSS_DSSWEBSERVERURL#g" $DSS_ROOT/offloc/DSSWebService.properties.template
     fi
-    echo 'Fetch per env SSM Creds - username'
+    # Fetch per env SSM Creds
     sed -i "s/username=___CHANGEME___/username=$1/g" $DSS_ROOT/offloc/DSSWebService.properties.template
-    echo 'Fetch per env SSM Creds - password'
     sed -i "s/password=___CHANGEME___/password=$2/g" $DSS_ROOT/offloc/DSSWebService.properties.template
-    
-    echo "$DSS_ROOT/offloc/DSSWebService.properties.template"
-    cat $DSS_ROOT/offloc/DSSWebService.properties.template | grep url
-    cat $DSS_ROOT/offloc/DSSWebService.properties.template | grep username
 }
 
 function hmpsserver_config {
-    echo 'hmpsserver_config'
     if [ !  -z $DSS_HMPSSERVERURL ]; then
         # URL requires a diff seperator for sed
         sed -i "s#url=https:\/\/localhost:8080/testfile.zip#url=$DSS_HMPSSERVERURL#g" $DSS_ROOT/offloc/HMPSServerDetails.properties.template
     fi
-    echo 'Fetch per env SSM Creds - username'
+    # Fetch per env SSM Creds
     sed -i "s/username=___CHANGEME___/username=$1/g" $DSS_ROOT/offloc/HMPSServerDetails.properties.template
-    echo 'Fetch per env SSM Creds - password'
     sed -i "s/password=___CHANGEME___/password=$2/g" $DSS_ROOT/offloc/HMPSServerDetails.properties.template
 }
 
 function filetransfer_config {
-    echo 'filetransfer_config'
     CONF=$DSS_ROOT/filetransfer/resource/FileTransfer.properties
 
     if [ ! -z $DSS_PNOMISFILEEXTENSION ]; then
@@ -73,88 +61,43 @@ function filetransfer_config {
     if [ ! -z $DSS_TESTINGAUTOCORRECT ]; then
         sed -i "s/offloc.testing.autocorrect=true/offloc.testing.autocorrect=$DSS_TESTINGAUTOCORRECT/g" $CONF
     fi
-    if [ ! -z $DSS_TESTMODE ]; then 
+    if [ ! -z $DSS_TESTMODE ]; then
         sed -i "s/test.mode=false/test.mode=$DSS_TESTMODE/g" $CONF
     fi
-    if [ ! -z $DSS_TESTFILE ]; then 
-        sed -i "s/test.offloc.file.path=\/dss_artefacts\/test_file.zip/test.offloc.file.path=\/dss_artefacts\/$DSS_TESTFILE/g" $CONF
+    if [ ! -z $DSS_TESTFILE ]; then
+        sed -i "s/test.offloc.file.path/test.mode=$DSS_TESTFILE/g" $CONF
     fi
     sed -i "s/___DSSIV___/$1/g" $CONF
-    
-    echo "$DSS_ROOT/filetransfer/resource/FileTransfer.properties"
-    cat $CONF
 }
 
 function fileimporter_config {
-    echo 'fileimporter_config'
     sed -i "s/___DSSIV___/$1/g" $DSS_ROOT/fileimporter/resource/FileImporter.properties
-
-    echo "$DSS_ROOT/filetransfer/resource/FileImporter.properties"
-    cat $CONF
 }
 
 function check_log_errors {
-    echo 'check_log_errors'
-    FATALERRORSFILENAME='./fatalerrors.txt'
-    grep FATAL $1 | tr -d '"' > $FATALERRORSFILENAME
-
-    # max number of parse errors to fail the job on
-    PARSEERRORMAXLIMIT=10
-    # if we pass in override as env var PARSEERRORMAXLIMITOVERRIDE update to use this override
-    if [ ! -z $PARSEERRORMAXLIMITOVERRIDE ]; then
-        PARSEERRORMAXLIMIT=$PARSEERRORMAXLIMITOVERRIDE
-    fi
-    # track number of FATAL errors in this file not ones we expect (parser)
-    FATALERRORCOUNTNOTAPARSEERROR=0
-    LINEPARSEERRORCOUNT=0
-
-    while read line; do
-        echo "Checking Line: $line"
-        if [ $(echo $line | grep 'An\|exception\|occurred\|when\|parsing\|data\|in\|P-NOMIS\|file\|at\|line\|number' | wc -l) -eq 0 ]; then
-            echo "Fatal errors detected other than line parse error"
-            FATALERRORCOUNTNOTAPARSEERROR=$((FATALERRORCOUNTNOTAPARSEERROR+1))
-        else
-            echo "Line parse error detected, ignore this error unless we get >= $PARSEERRORMAXLIMIT occurrence. "
-            LINEPARSEERRORCOUNT=$((LINEPARSEERRORCOUNT+1))
-        fi
-        # echo "Line check completed."
-    done < "$FATALERRORSFILENAME"
-
-    echo "FATALERRORCOUNTNOTAPARSEERROR: $FATALERRORCOUNTNOTAPARSEERROR"
-    echo "PARSEERRORMAXLIMIT:  $PARSEERRORMAXLIMIT"
-    echo "LINEPARSEERRORCOUNT: $LINEPARSEERRORCOUNT"
-
-    if [ "$FATALERRORCOUNTNOTAPARSEERROR" -gt 0 ]; then
-        echo "Fatal errors detected in $1 that were not parse errors"
-    else
-        echo "No Fatal errors detected in $1 that were not parse errors"
-        if [ "$LINEPARSEERRORCOUNT" -ge "$PARSEERRORMAXLIMIT" ]; then
-            echo "Fatal parse error count of $LINEPARSEERRORCOUNT is >= limit of $PARSEERRORMAXLIMIT in file $1"
-            err_exit $1 2
-        else
-            echo "Fatal parse error count of $LINEPARSEERRORCOUNT is less than limit of $PARSEERRORMAXLIMIT in file $1"
-        fi
+    if [ $(grep FATAL $1 | wc -l) -gt 0 ]; then
+        echo "Fatal errors detected in $1"
+        err_exit $1 2
     fi
 }
 
 # Only fetch params if not in build environment
-echo "DSS_BUILDTESTMODE = $DSS_BUILDTESTMODE"
 if [ -z $DSS_BUILDTESTMODE ]; then
-    # Get list of params in this region that match predetermined path
+    # Get list of params in this region that match predetermined path
     echo "Fetching DSS credentials from SSM..."
     DSS_PARAMS_JSON=$(aws ssm get-parameters --names "/$DSS_ENVIRONMENT/$DSS_PROJECT/apacheds/apacheds/dss_user" "/$DSS_ENVIRONMENT/$DSS_PROJECT/apacheds/apacheds/dss_user_password" --with-decryption --region $DSS_AWSREGION)
     # Expect 2 keys
-    if [ $(echo $DSS_PARAMS_JSON | jq -r '.Parameters | length') -ne 2 ] || [ "$DSS_PARAMS_JSON" == "" ]; then 
+    if [ $(echo $DSS_PARAMS_JSON | jq -r '.Parameters | length') -ne 2 ] || [ "$DSS_PARAMS_JSON" == "" ]; then
         echo "Fatal - failed to retrieve required DSS SSM Parameters.";
         err_exit FetchSSMParameters 3
     fi
     DSS_WEB_USER=$(echo $DSS_PARAMS_JSON | jq -r '.Parameters[] | select(.Name | contains("dss_user"))| .Value ')
     DSS_WEB_PASSWORD=$(echo $DSS_PARAMS_JSON | jq -r '.Parameters[] | select(.Name | contains("dss_user_password"))| .Value ')
-    
+
     echo "Fetching PNOMIS credentials from SSM..."
     PNOMIS_PARAMS_JSON=$(aws ssm get-parameters --names "/$DSS_ENVIRONMENT/$DSS_PROJECT/dss/dss/pnomis_web_user" "/$DSS_ENVIRONMENT/$DSS_PROJECT/dss/dss/pnomis_web_password" --with-decryption --region $DSS_AWSREGION)
     # Expect 2 keys
-    if [ $(echo $PNOMIS_PARAMS_JSON | jq -r '.Parameters | length') -ne 2 ] || [ "$PNOMIS_PARAMS_JSON" == "" ]; then 
+    if [ $(echo $PNOMIS_PARAMS_JSON | jq -r '.Parameters | length') -ne 2 ] || [ "$PNOMIS_PARAMS_JSON" == "" ]; then
         echo "Fatal - failed to retrieve required PNOMIS SSM Parameters.";
         err_exit FetchSSMParameters 3
     fi
@@ -179,12 +122,10 @@ echo "Updating fileimporter_config..."
 fileimporter_config $IV
 
 # Encrypt sensitive files
-echo 'Encrypt sensitive files'
 cd $DSS_ROOT/encryptionutility
 java -cp ./*:lib/*:encryptionutility.jar:resource uk.co.bconline.ndelius.dss.common.impl.CredentialsGenerator ../offloc/DSSWebService.properties.template ../offloc/DSSWebService.properties ../offloc/DSSWebService.keyfile
 java -cp ./*:lib/*:encryptionutility.jar:resource uk.co.bconline.ndelius.dss.common.impl.CredentialsGenerator ../offloc/HMPSServerDetails.properties.template ../offloc/HMPSServerDetails.properties ../offloc/HMPSServerDetails.keyfile
 
-echo 'generate enc props file'
 if [ ! -f $DSS_ROOT/offloc/DSSWebService.keyfile ] && [ ! -f $DSS_ROOT/offloc/DSSWebService.properties ]; then
     echo "Error - Failed to generate encrypted properties file for DSSWebService"
     err_exit DSSWebServiceEnryption 4
@@ -204,35 +145,14 @@ fi
 cd $DSS_ROOT/filetransfer
 java $JAVA_OPTS -Dcom.sun.jndi.ldap.object.disableEndpointIdentification=true -cp filetransfer.jar:resource uk.co.bconline.ndelius.dss.filetransfer.FileTransfer
 FTRESULT=$?
-
-# Wait for FI to finish (this process is started by FileTransfer app)
-while [ $(ps -o pid,args | grep "fileimporter.jar" | grep -v grep | awk '{print $1}'|wc -l) -gt 0 ] ; do 
-    echo "Waiting for FileImporter process to finish"; 
-    sleep 10; 
+# Wait for FI to finish
+while [ $(ps -o pid,args | grep "fileimporter.jar" | grep -v grep | awk '{print $1}'|wc -l) -gt 0 ] ; do
+    echo "Waiting for FileImporter process to finish";
+    sleep 10;
 done
-
-# # check filetransfer was successful - there's a file
-# OFFLOCFILEPATH=$(grep "^offloc.file.path" /dss_config/FileTransfer.properties | cut -d '=' -f 2)
-
-# echo "Checking file download '$OFFLOCFILEPATH' exists to confirm if downloaded offloc file exists.."
-# ls -al $OFFLOCFILEPATH
-# if test -f "$OFFLOCFILEPATH"; then
-#     echo "$OFFLOCFILEPATH exists."
-# else
-#     echo "'$OFFLOCFILEPATH' does not exists so there was an issue with file transfer."
-#     err_exit FileTransfer 2
-# fi
-
 # FileTransfer logs are output to stdout/stderr, but the child FileImporter logs are only written to file - print it for Cloudwatch
-echo "Checking FileImporter log file '/dss/fileimporter/fileimporter.log' exists."
-if test -f "/dss/fileimporter/fileimporter.log"; then
-    echo "/dss/fileimporter/fileimporter.log exists."
-    echo "FileImporter Logs follow:"
-    cat /dss/fileimporter/fileimporter.log
-else
-    echo "'/dss/fileimporter/fileimporter.log' does not exist.There was an issue with file transfer."
-    err_exit FileImport 2
-fi
+echo "FileImporter Logs folow:"
+cat /dss/fileimporter/fileimporter.log
 
 echo "FT Result == $FTRESULT"
 if [ $FTRESULT -eq 0 ]; then
