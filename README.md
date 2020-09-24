@@ -3,7 +3,7 @@
 Docker repo for Data Share System
 
 
-Note: This replaces hmpps-delius-dss-docker repository which was owned by John Barber
+Note: This replaces [hmpps-delius-dss-docker](https://github.com/ministryofjustice/hmpps-delius-dss-docker) repository which was owned by John Barber
   
 
 ## Purpose
