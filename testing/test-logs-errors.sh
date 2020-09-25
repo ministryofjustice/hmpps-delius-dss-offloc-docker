@@ -7,7 +7,7 @@ function err_exit {
 }
 
 function check_log_errors {
-    
+    # echo 'check_log_errors'
     FATALERRORSFILENAME='./fatalerrors.txt'
     grep FATAL $1 | tr -d '"' > $FATALERRORSFILENAME
 
@@ -23,14 +23,14 @@ function check_log_errors {
 
     while read line; do
         echo "Checking Line: $line"
-        if [ $(echo $line | grep 'An\|exception\|occurred\|when\|parsing\|data\|in\|P-NOMIS\|file\|at\|line\|number' | wc -l) -eq 0 ]; then
-            echo "Fatal errors detected other than line parse error"
-            FATALERRORCOUNTNOTAPARSEERROR=$((FATALERRORCOUNTNOTAPARSEERROR+1))
-        else
+        echo "Checking for parse error.."
+        if [ $(echo $line | grep 'An exception occurred when parsing data in P-NOMIS file at line number' | wc -l) -eq 1 ]; then
             echo "Line parse error detected, ignore this error unless we get >= $PARSEERRORMAXLIMIT occurrence. "
             LINEPARSEERRORCOUNT=$((LINEPARSEERRORCOUNT+1))
+        else
+            echo "Fatal errors detected other than line parse error"
+            FATALERRORCOUNTNOTAPARSEERROR=$((FATALERRORCOUNTNOTAPARSEERROR+1))
         fi
-        # echo "Line check completed."
     done < "$FATALERRORSFILENAME"
 
     echo "FATALERRORCOUNTNOTAPARSEERROR: $FATALERRORCOUNTNOTAPARSEERROR"
@@ -48,7 +48,6 @@ function check_log_errors {
             echo "Fatal parse error count of $LINEPARSEERRORCOUNT is less than limit of $PARSEERRORMAXLIMIT in file $1"
         fi
     fi
-
 }
 
 FTRESULT=0

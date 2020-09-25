@@ -1,30 +1,60 @@
 # hmpps-delius-dss-offloc-docker
 
-Docker repo for Data Share System
+# Docker repo for Data Share System
 
 
-Note: This replaces hmpps-delius-dss-docker repository which was owned by John Barber
+Note: This replaces [hmpps-delius-dss-docker](https://github.com/ministryofjustice/hmpps-delius-dss-docker) repository which was owned by John Barber
   
 
-## Purpose
+### Purpose
 
-Build, test and push a docker container which when run will invoke a single run of the DSS batch process
+Docker container used to download P-NOMIS DSS file and upload to delius. 
 
-Default DSS Config can be overridden by specifying environment variables at runtime,
-e.g. `docker run -e DSS_ENVIRONMENT=delius-prod -e DSS_TESTMODE=true -e DSS_DSSWEBSERVERURL=https://server.local:8080 <image>`
+This container is executed under the AWS Batch Platform in the VPC we are updating the NDelius service with the DSS data.
 
-The table below lists the available variables:
+### More Documentation
 
-| Variable Name | Type | Purpose |
-|--|--|--|
-| DSS_ENVIRONMENT | String, e.g. delius-core-sandpit | nDelius AWS Environment |
-| DSS_PROJECT | String, e.g. delius | nDelius Project Name |
-| DSS_AWSREGION | String, e.g. eu-west-2 | nDelius AWS Environment Region |
-| DSS_DSSWEBSERVERURL | String (URL), e.g. https://interface.test.delius.probation.hmpps.dsd.io/NDeliusDSS  | nDelius API Endpoint |
-| DSS_HMPSSERVERURL | String (URL), e.g. https://ped.hmps.gsi.gov.uk  | P-NOMIS Endpoint |
-| DSS_PNOMISFILEEXTENSION | String (File Extension), e.g. .dat | Unzipped file extension for source offloc file  |
-| DSS_FILEIMPORTERSTARTUPCMD | String  | The operating system command that should be used to invoke the File Importer application.  |
-| DSS_TESTINGAUTOCORRECT | BOOLEAN | Attempt to auto correct files |
-| DSS_TESTMODE | BOOLEAN | Specifies whether or not the File Transfer application should run in test mode. (i.e. read OFFLOC file from the local file system)  |
-| DSS_TESTFILE | String (Filesystem Path), e.g. /dss/testfile.zip | Path to an OFFLOC file that should be used in a test environment. |
-| DSS_BUILDTESTMODE | Any | If set, signifies a test run as part of the Docker build pipeline and won't run DSS tasks |
+See the docs in [Confluence](https://dsdmoj.atlassian.net/wiki/spaces/DAM/pages/1488486513/Data+Share+System+DSS?search_id=e500873d-de55-4c49-9b77-dd5f6abfe714)
+### Platforms
+
+- delius-stage - Testing
+- delius-prod  - Live
+
+### Building the Dockerfile
+
+- Currently the Dockerfile is built by Jenkins Job [Jenkins > Delius-Core > DSS/ > HMPPS DSS Docker Image Build](https://jenkins.engineering-dev.probation.hmpps.dsd.io/job/Delius-Core/job/DSS/job/HMPPS%20DSS%20Docker%20Image%20Build/)
+- New AWS CodeBuild Project will be created soon to deprecate this job. (Update this to link to new Project)
+  - task to create new Project https://jira.engineering-dev.probation.hmpps.dsd.io/browse/ALS-1788
+
+### Deployment
+
+Deployed using the https://github.com/ministryofjustice/hmpps-delius-core-terraform/tree/master/batch/dss folder via Terraform.
+
+### Process
+
+- Download credentials from SSM ParameterStore for this environment & update configs
+- Starting File Transfer application.
+  - Validating FileTransfer.properties configuration file...
+  - Write temporary zip file.
+  - Run OFFLOC file check for PNOMIS. (validation)
+  - Attempting Auto Correct for validation errors
+  - Start the FileImporter process (java)
+
+### Logging
+
+- Execution logs sent to the [/aws/batch/job](https://eu-west-2.console.aws.amazon.com/cloudwatch/home?region=eu-west-2#logsV2:log-groups/log-group/$252Faws$252Fbatch$252Fjob) Cloudwatch LogGroup in the specified account.
+  
+### Alarms
+
+- Alarms sent to Slack channels depending upon if its prod/non-prod
+
+| Account      | Slack Channel  (MOJ Digital & Technology) |
+|--------------|--------------------------------------|
+| delius-stage | #delius-alerts-deliuscore-nonprod    |
+| delius-prod  | #delius-alerts-deliuscore-production |
+
+### Testing
+
+See [Testing.md](h./../Testing.md)
+
+
