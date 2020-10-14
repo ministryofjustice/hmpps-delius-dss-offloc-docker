@@ -2,7 +2,7 @@
 
 set -x
 
-# This script prepares a base DSS envronment, including template config files
+# This script prepares a base DSS Client environment, including template config files
 # Addiional config is generated/loaded at run time via the dss_run.sh script
 if [ -z $DSS_VERSION ]; then
     if [ -z $1 ]; then
@@ -17,12 +17,12 @@ fi
 AWSCLI=$(which aws)
 
 cd /dss_artefacts
-$AWSCLI s3 cp s3://tf-eu-west-2-hmpps-eng-dev-delius-core-dependencies-s3bucket/dependencies/delius-core/NDelius-$DSS_VERSION/EIS/NDelius-DSS-EncryptionUtility-$DSS_VERSION-EU.zip .
-$AWSCLI s3 cp s3://tf-eu-west-2-hmpps-eng-dev-delius-core-dependencies-s3bucket/dependencies/delius-core/NDelius-$DSS_VERSION/EIS/NDelius-DSS-FileTransfer-$DSS_VERSION-FT.zip .
-$AWSCLI s3 cp s3://tf-eu-west-2-hmpps-eng-dev-delius-core-dependencies-s3bucket/dependencies/delius-core/OFFLOC/test_file.zip .
+
 # TODO Workaround for FileImporter not following redirects issue
-#$AWSCLI s3 cp s3://tf-eu-west-2-hmpps-eng-dev-delius-core-dependencies-s3bucket/dependencies/delius-core/NDelius-$DSS_VERSION/EIS/NDelius-DSS-FileImporter-$DSS_VERSION-FI.zip .
 $AWSCLI s3 cp s3://tf-eu-west-2-hmpps-eng-dev-delius-core-dependencies-s3bucket/dependencies/delius-core/OFFLOC/NDelius-DSS-FileImporter-3.0-FI.zip NDelius-DSS-FileImporter-$DSS_VERSION-FI.zip
+
+# Fetch test data file from S3
+$AWSCLI s3 cp s3://tf-eu-west-2-hmpps-eng-dev-delius-core-dependencies-s3bucket/dependencies/delius-core/OFFLOC/test_file.zip .
 
 # Set up app dirs and Unzip deployment artefacts
 cd /dss
@@ -32,8 +32,8 @@ unzip /dss_artefacts/NDelius-DSS-FileTransfer-$DSS_VERSION-FT.zip -d filetransfe
 unzip /dss_artefacts/NDelius-DSS-FileImporter-$DSS_VERSION-FI.zip -d fileimporter/
 
 # Handle incorrectly named artefact
-if [ -f fileimporter/\$fileimporter.jar ]; then 
-    mv fileimporter/\$fileimporter.jar fileimporter/fileimporter.jar; 
+if [ -f fileimporter/\$fileimporter.jar ]; then
+    mv fileimporter/\$fileimporter.jar fileimporter/fileimporter.jar;
 fi
 
 # Copy template files into place
@@ -43,7 +43,7 @@ cp /dss_config/FileImporter.properties fileimporter/resource/FileImporter.proper
 cp /dss_config/encryption.properties encryptionutility/resource/encryption.properties
 cp /dss_config/HMPSServerDetails.properties.template offloc/HMPSServerDetails.properties.template
 
-# Remove remote log4j appender config 
+# Remove remote log4j appender config
 xmlstarlet ed -L -d '//root' /dss/fileimporter/resource/log4j.xml
 xmlstarlet ed -L -d '//root' /dss/filetransfer/resource/log4j.xml
 xmlstarlet ed -L -d '//appender[@name = "socketNode"]' /dss/fileimporter/resource/log4j.xml
@@ -51,7 +51,7 @@ xmlstarlet ed -L -d '//appender[@name = "socketNode"]' /dss/filetransfer/resourc
 xmlstarlet ed -L -d '//appender[@name = "asyncSocketNode"]' /dss/fileimporter/resource/log4j.xml
 xmlstarlet ed -L -d '//appender[@name = "asyncSocketNode"]' /dss/filetransfer/resource/log4j.xml
 
-# Set cnosistent file permissions across DSS builds
+# Set consistent file permissions across DSS builds
 chmod 0640 /dss/filetransfer/filetransfer.jar
 chmod 0640 /dss/filetransfer/resource/FileTransfer.properties
 chmod 0640 /dss/encryptionutility/encryptionutility.jar
@@ -60,4 +60,3 @@ chmod 0640 /dss/fileimporter/fileimporter.jar
 chmod 0640 /dss/fileimporter/resource/FileImporter.properties
 
 exit 0
-  

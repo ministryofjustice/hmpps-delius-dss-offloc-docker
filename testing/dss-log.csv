@@ -1,0 +1,1187 @@
+timestamp	message
+1.60087E+12	/dss_scripts/dss_run.sh: line 16: [: -Xms1024m: binary operator expected
+1.60087E+12	DSS_BUILDTESTMODE = 
+1.60087E+12	Fetching DSS credentials from SSM...
+1.60087E+12	Fetching PNOMIS credentials from SSM...
+1.60087E+12	Credentials retrieved successfully.
+1.60087E+12	Updating dsswebserver_config...
+1.60087E+12	dsswebserver_config
+1.60087E+12	updating dsswebserver url=https://interface-app-internal.stage.delius.probation.hmpps.dsd.io/NDeliusDSS/UpdateOffender
+1.60087E+12	Fetch per env SSM Creds - username
+1.60087E+12	Fetch per env SSM Creds - password
+1.60087E+12	/dss/offloc/DSSWebService.properties.template
+1.60087E+12	url=https://interface-app-internal.stage.delius.probation.hmpps.dsd.io/NDeliusDSS/UpdateOffender
+1.60087E+12	username=DSS-User
+1.60087E+12	Updating hmpsserver_config...
+1.60087E+12	hmpsserver_config
+1.60087E+12	Fetch per env SSM Creds - username
+1.60087E+12	Fetch per env SSM Creds - password
+1.60087E+12	Updating encryptiontool_config...
+1.60087E+12	encryptiontool_config
+1.60087E+12	Updating filetransfer_config...
+1.60087E+12	filetransfer_config
+1.60087E+12	/dss/filetransfer/resource/FileTransfer.properties
+1.60087E+12	"	# FILE TRANSFER CONFIGURATION "
+1.60087E+12	# Path to the encrypted file containing details for accessing HMPS staging server
+1.60087E+12	hmps.server.details.path=/dss/offloc/HMPSServerDetails.properties
+1.60087E+12	# Path to the symmetric key file required to decrypt the HMPS staging server details
+1.60087E+12	key.file.path=/dss/offloc/HMPSServerDetails.keyfile
+1.60087E+12	# Path specifying the local file system location where the OFFLOC file should be saved to.
+1.60087E+12	offloc.file.path=/dss/outputs/offloc.zip
+1.60087E+12	# Extension of the P-NOMIS zip entry within the OFFLOC file
+1.60087E+12	pnomis.file.extension=dat
+1.60087E+12	# Extension of the LIDS zip entry within the OFFLOC file 
+1.60087E+12	# *** N.B. this MUST be commented out if the OFFLOC file does not contain a LIDS data file otherwise the application will terminate immediately ***
+1.60087E+12	#lids.file.extension=ped
+1.60087E+12	# Path specifying the local file system location where the consolidated prison file should be created.
+1.60087E+12	consolidated.prison.file.path=/dss/outputs/consolidated_prison_file.xml
+1.60087E+12	# The deployment location of the File Importer application.
+1.60087E+12	file.importer.deployment.directory=/dss/fileimporter
+1.60087E+12	# The operating system command that should be used to invoke the File Importer application.
+1.60087E+12	file.importer.startup.command=java -Xms256m -Xmx512m -cp fileimporter.jar:resource uk.co.bconline.ndelius.dss.fileimporter.FileImporter
+1.60087E+12	# 16 byte encryption IV. (this will be used when reading the encrypted HMPS server resource bundle and MUST match the IV used during encryption. 
+1.60087E+12	encryption.initialisation.vector=KlWDnMZs3WO5aY0j
+1.60087E+12	#Attempt to auto correct files
+1.60087E+12	offloc.testing.autocorrect=true
+1.60087E+12	#Location of WinZip command line executable
+1.60087E+12	winzip.path=/usr/bin/unzip
+1.60087E+12	# TEST MODE CONFIGURATION
+1.60087E+12	# Specifies whether or not the File Transfer application should run in test mode. (i.e. read OFFLOC file from the local file system)
+1.60087E+12	test.mode=false
+1.60087E+12	# Path to an OFFLOC file that should be used in a test environment.
+1.60087E+12	test.offloc.file.path=/dss_artefacts/test_file.zip
+1.60087E+12	# Switch between using WinZip command line (Default) or Native Java ZipFile.  
+1.60087E+12	use.java.zipfile=trueUpdating fileimporter_config...
+1.60087E+12	fileimporter_config
+1.60087E+12	/dss/filetransfer/resource/FileImporter.properties
+1.60087E+12	"	# FILE TRANSFER CONFIGURATION "
+1.60087E+12	# Path to the encrypted file containing details for accessing HMPS staging server
+1.60087E+12	hmps.server.details.path=/dss/offloc/HMPSServerDetails.properties
+1.60087E+12	# Path to the symmetric key file required to decrypt the HMPS staging server details
+1.60087E+12	key.file.path=/dss/offloc/HMPSServerDetails.keyfile
+1.60087E+12	# Path specifying the local file system location where the OFFLOC file should be saved to.
+1.60087E+12	offloc.file.path=/dss/outputs/offloc.zip
+1.60087E+12	# Extension of the P-NOMIS zip entry within the OFFLOC file
+1.60087E+12	pnomis.file.extension=dat
+1.60087E+12	# Extension of the LIDS zip entry within the OFFLOC file 
+1.60087E+12	# *** N.B. this MUST be commented out if the OFFLOC file does not contain a LIDS data file otherwise the application will terminate immediately ***
+1.60087E+12	#lids.file.extension=ped
+1.60087E+12	# Path specifying the local file system location where the consolidated prison file should be created.
+1.60087E+12	consolidated.prison.file.path=/dss/outputs/consolidated_prison_file.xml
+1.60087E+12	# The deployment location of the File Importer application.
+1.60087E+12	file.importer.deployment.directory=/dss/fileimporter
+1.60087E+12	# The operating system command that should be used to invoke the File Importer application.
+1.60087E+12	file.importer.startup.command=java -Xms256m -Xmx512m -cp fileimporter.jar:resource uk.co.bconline.ndelius.dss.fileimporter.FileImporter
+1.60087E+12	# 16 byte encryption IV. (this will be used when reading the encrypted HMPS server resource bundle and MUST match the IV used during encryption. 
+1.60087E+12	encryption.initialisation.vector=KlWDnMZs3WO5aY0j
+1.60087E+12	#Attempt to auto correct files
+1.60087E+12	offloc.testing.autocorrect=true
+1.60087E+12	#Location of WinZip command line executable
+1.60087E+12	winzip.path=/usr/bin/unzip
+1.60087E+12	# TEST MODE CONFIGURATION
+1.60087E+12	# Specifies whether or not the File Transfer application should run in test mode. (i.e. read OFFLOC file from the local file system)
+1.60087E+12	test.mode=false
+1.60087E+12	# Path to an OFFLOC file that should be used in a test environment.
+1.60087E+12	test.offloc.file.path=/dss_artefacts/test_file.zip
+1.60087E+12	# Switch between using WinZip command line (Default) or Native Java ZipFile.  
+1.60087E+12	use.java.zipfile=trueEncrypt sensitive files
+1.60087E+12	generate enc props file
+1.60087E+12	 INFO  2020-September-23 16:00:48,917 PrisonDataTransferLogger:121 - Starting File Transfer application.
+1.60087E+12	 INFO  2020-September-23 16:00:48,919 PrisonDataTransferLogger:121 - Validating FileTransfer.properties configuration file...
+1.60087E+12	 INFO  2020-September-23 16:00:49,097 PrisonDataTransferLogger:121 - FileTransfer.properties successfully validated - beginning processing.
+1.60087E+12	 INFO  2020-September-23 16:00:51,847 PrisonDataTransferLogger:121 - Writing temporary zip file.
+1.60087E+12	 INFO  2020-September-23 16:02:06,519 PrisonDataTransferLogger:121 - Decompressing pNOMIS file.
+1.60087E+12	 INFO  2020-September-23 16:02:08,736 PrisonDataTransferLogger:121 - Running OFFLOC file check for PNOMIS.
+1.60087E+12	 INFO  2020-September-23 16:02:10,697 OfflocFileCheck:137 - 
+1.60087E+12	###############################################################
+1.60087E+12	 No Invalid Data Type Issues were found.
+1.60087E+12	###############################################################
+1.60087E+12	 INFO  2020-September-23 16:02:10,698 OfflocFileCheck:140 - Completed data type validation.
+1.60087E+12	 INFO  2020-September-23 16:02:10,698 OfflocFileCheck:154 - Attempting Auto Correct
+1.60087E+12	 INFO  2020-September-23 16:02:19,035 PrisonDataTransferLogger:121 - Parsing Prison Data File and running record level validation checks
+1.60087E+12	###############################################################
+1.60087E+12	 FATAL 2020-September-23 16:02:27,758 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 30124
+1.60087E+12	uk.co.bconline.ndelius.dss.filetransfer.exception.FileTransferException: A date field was not in the expected format of dd/mm/yyyy
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:888)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.processRecord(ConsolidatedPrisonFileWriterImpl.java:823)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parsePrisonDataFile(ConsolidatedPrisonFileWriterImpl.java:548)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.execute(FileTransfer.java:305)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.main(FileTransfer.java:133)"
+1.60087E+12	Caused by: java.text.ParseException: Unparseable date: "AwaitingInduction","HLI-OTHER-STAYONWING","08","30","11","45"~"AwaitingInduction","HLI-OTHER-STAYONWING","13","45","16","45"
+1.60087E+12	"	at java.text.DateFormat.parse(DateFormat.java:366)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:878)"
+1.60087E+12	"	... 4 more"
+1.60087E+12	 FATAL 2020-September-23 16:02:30,267 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 43807
+1.60087E+12	uk.co.bconline.ndelius.dss.filetransfer.exception.FileTransferException: A date field was not in the expected format of dd/mm/yyyy
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:888)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.processRecord(ConsolidatedPrisonFileWriterImpl.java:823)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parsePrisonDataFile(ConsolidatedPrisonFileWriterImpl.java:548)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.execute(FileTransfer.java:305)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.main(FileTransfer.java:133)"
+1.60087E+12	Caused by: java.text.ParseException: Unparseable date: "2020UNEMPLOYED","LWI-RTU","09","15","11","30"~"2020UNEMPLOYED","LWI-RTU","14","00","16","30"
+1.60087E+12	"	at java.text.DateFormat.parse(DateFormat.java:366)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:878)"
+1.60087E+12	"	... 4 more"
+1.60087E+12	 FATAL 2020-September-23 16:02:30,317 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 44166
+1.60087E+12	uk.co.bconline.ndelius.dss.filetransfer.exception.FileTransferException: A date field was not in the expected format of dd/mm/yyyy
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:888)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.processRecord(ConsolidatedPrisonFileWriterImpl.java:823)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parsePrisonDataFile(ConsolidatedPrisonFileWriterImpl.java:548)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.execute(FileTransfer.java:305)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.main(FileTransfer.java:133)"
+1.60087E+12	Caused by: java.text.ParseException: Unparseable date: "R-ROM"~"V-VI"~"P-PC2"~"P-PVN"~"R-ROH"~"R-RPB"~"R-RLO"~"X-XNR"~"O-OISFL"
+1.60087E+12	"	at java.text.DateFormat.parse(DateFormat.java:366)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:878)"
+1.60087E+12	"	... 4 more"
+1.60087E+12	 FATAL 2020-September-23 16:02:33,315 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 61990
+1.60087E+12	uk.co.bconline.ndelius.dss.filetransfer.exception.FileTransferException: A date field was not in the expected format of dd/mm/yyyy
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:888)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.processRecord(ConsolidatedPrisonFileWriterImpl.java:823)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parsePrisonDataFile(ConsolidatedPrisonFileWriterImpl.java:548)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.execute(FileTransfer.java:305)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.main(FileTransfer.java:133)"
+1.60087E+12	Caused by: java.text.ParseException: Unparseable date: "RMFRMC"
+1.60087E+12	"	at java.text.DateFormat.parse(DateFormat.java:366)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:878)"
+1.60087E+12	"	... 4 more"
+1.60087E+12	 FATAL 2020-September-23 16:02:35,207 PrisonDataTransferLogger:109 - An exception occurred when parsing data in P-NOMIS file at line number 73800
+1.60087E+12	java.lang.StringIndexOutOfBoundsException: String index out of range: -1
+1.60087E+12	"	at java.lang.String.substring(String.java:1967)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.removeQuotes(ConsolidatedPrisonFileWriterImpl.java:941)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parsePrisonDataFile(ConsolidatedPrisonFileWriterImpl.java:513)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.execute(FileTransfer.java:305)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.main(FileTransfer.java:133)"
+1.60087E+12	 FATAL 2020-September-23 16:02:35,998 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 78996
+1.60087E+12	uk.co.bconline.ndelius.dss.filetransfer.exception.FileTransferException: A date field was not in the expected format of dd/mm/yyyy
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:888)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.processRecord(ConsolidatedPrisonFileWriterImpl.java:823)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parsePrisonDataFile(ConsolidatedPrisonFileWriterImpl.java:548)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.execute(FileTransfer.java:305)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.main(FileTransfer.java:133)"
+1.60087E+12	Caused by: java.text.ParseException: Unparseable date: "Imprisonment"
+1.60087E+12	"	at java.text.DateFormat.parse(DateFormat.java:366)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:878)"
+1.60087E+12	"	... 4 more"
+1.60087E+12	 FATAL 2020-September-23 16:02:36,221 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 80722
+1.60087E+12	uk.co.bconline.ndelius.dss.filetransfer.exception.FileTransferException: A date field was not in the expected format of dd/mm/yyyy
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:888)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.processRecord(ConsolidatedPrisonFileWriterImpl.java:823)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parsePrisonDataFile(ConsolidatedPrisonFileWriterImpl.java:548)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.execute(FileTransfer.java:305)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.main(FileTransfer.java:133)"
+1.60087E+12	Caused by: java.text.ParseException: Unparseable date: "WaitingList","WWI-OTHER-WAITINGLIST","20","00","22","00"
+1.60087E+12	"	at java.text.DateFormat.parse(DateFormat.java:366)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:878)"
+1.60087E+12	"	... 4 more"
+1.60087E+12	 FATAL 2020-September-23 16:02:36,233 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 80836
+1.60087E+12	uk.co.bconline.ndelius.dss.filetransfer.exception.FileTransferException: A date field was not in the expected format of dd/mm/yyyy
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:888)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.processRecord(ConsolidatedPrisonFileWriterImpl.java:823)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parsePrisonDataFile(ConsolidatedPrisonFileWriterImpl.java:548)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.execute(FileTransfer.java:305)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.main(FileTransfer.java:133)"
+1.60087E+12	Caused by: java.text.ParseException: Unparseable date: "M:07946431991,MsKamalChannaSolicitorBROOKLYNLAW","","""
+1.60087E+12	"	at java.text.DateFormat.parse(DateFormat.java:366)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:878)"
+1.60087E+12	"	... 4 more"
+1.60087E+12	 FATAL 2020-September-23 16:02:36,248 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 80969
+1.60087E+12	uk.co.bconline.ndelius.dss.filetransfer.exception.FileTransferException: A date field was not in the expected format of dd/mm/yyyy
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:888)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.processRecord(ConsolidatedPrisonFileWriterImpl.java:823)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parsePrisonDataFile(ConsolidatedPrisonFileWriterImpl.java:548)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.execute(FileTransfer.java:305)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.main(FileTransfer.java:133)"
+1.60087E+12	Caused by: java.text.ParseException: Unparseable date: "Unemployedprisoners","WWI-OTHER-UNEMPLOYED","07","30","11","30"~"Unemployedprisoners","WWI-OTHER-UNEMPLOYED","13","15","16","30"
+1.60087E+12	"	at java.text.DateFormat.parse(DateFormat.java:366)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:878)"
+1.60087E+12	"	... 4 more"
+1.60087E+12	 FATAL 2020-September-23 16:02:36,250 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 80976
+1.60087E+12	uk.co.bconline.ndelius.dss.filetransfer.exception.FileTransferException: A date field was not in the expected format of dd/mm/yyyy
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:888)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.processRecord(ConsolidatedPrisonFileWriterImpl.java:823)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parsePrisonDataFile(ConsolidatedPrisonFileWriterImpl.java:548)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.execute(FileTransfer.java:305)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.main(FileTransfer.java:133)"
+1.60087E+12	Caused by: java.text.ParseException: Unparseable date: "Unemployedprisoners","WWI-OTHER-UNEMPLOYED","07","30","11","30"~"Unemployedprisoners","WWI-OTHER-UNEMPLOYED","13","15","16","30"
+1.60087E+12	"	at java.text.DateFormat.parse(DateFormat.java:366)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:878)"
+1.60087E+12	"	... 4 more"
+1.60087E+12	 FATAL 2020-September-23 16:02:36,260 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 81042
+1.60087E+12	uk.co.bconline.ndelius.dss.filetransfer.exception.FileTransferException: A date field was not in the expected format of dd/mm/yyyy
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:888)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.processRecord(ConsolidatedPrisonFileWriterImpl.java:823)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parsePrisonDataFile(ConsolidatedPrisonFileWriterImpl.java:548)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.execute(FileTransfer.java:305)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.main(FileTransfer.java:133)"
+1.60087E+12	Caused by: java.text.ParseException: Unparseable date: "Imprisonment"
+1.60087E+12	"	at java.text.DateFormat.parse(DateFormat.java:366)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:878)"
+1.60087E+12	"	... 4 more"
+1.60087E+12	 FATAL 2020-September-23 16:02:36,283 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 81242
+1.60087E+12	uk.co.bconline.ndelius.dss.filetransfer.exception.FileTransferException: A date field was not in the expected format of dd/mm/yyyy
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:888)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.processRecord(ConsolidatedPrisonFileWriterImpl.java:823)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parsePrisonDataFile(ConsolidatedPrisonFileWriterImpl.java:548)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.execute(FileTransfer.java:305)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.main(FileTransfer.java:133)"
+1.60087E+12	Caused by: java.text.ParseException: Unparseable date: "Unemployedprisoners","WWI-OTHER-UNEMPLOYED","07","30","11","30"~"Unemployedprisoners","WWI-OTHER-UNEMPLOYED","13","15","16","30"
+1.60087E+12	"	at java.text.DateFormat.parse(DateFormat.java:366)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:878)"
+1.60087E+12	"	... 4 more"
+1.60087E+12	 FATAL 2020-September-23 16:02:36,286 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 81266
+1.60087E+12	uk.co.bconline.ndelius.dss.filetransfer.exception.FileTransferException: A date field was not in the expected format of dd/mm/yyyy
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:888)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.processRecord(ConsolidatedPrisonFileWriterImpl.java:823)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parsePrisonDataFile(ConsolidatedPrisonFileWriterImpl.java:548)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.execute(FileTransfer.java:305)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.main(FileTransfer.java:133)"
+1.60087E+12	Caused by: java.text.ParseException: Unparseable date: "Unemployedprisoners","WWI-OTHER-UNEMPLOYED","07","30","11","30"~"Unemployedprisoners","WWI-OTHER-UNEMPLOYED","13","15","16","30"
+1.60087E+12	"	at java.text.DateFormat.parse(DateFormat.java:366)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:878)"
+1.60087E+12	"	... 4 more"
+1.60087E+12	 FATAL 2020-September-23 16:02:36,295 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 81331
+1.60087E+12	uk.co.bconline.ndelius.dss.filetransfer.exception.FileTransferException: A date field was not in the expected format of dd/mm/yyyy
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:888)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.processRecord(ConsolidatedPrisonFileWriterImpl.java:823)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parsePrisonDataFile(ConsolidatedPrisonFileWriterImpl.java:548)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.execute(FileTransfer.java:305)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.main(FileTransfer.java:133)"
+1.60087E+12	Caused by: java.text.ParseException: Unparseable date: "STHWCC"
+1.60087E+12	"	at java.text.DateFormat.parse(DateFormat.java:366)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:878)"
+1.60087E+12	"	... 4 more"
+1.60087E+12	 WARN  2020-September-23 16:02:36,316 PrisonDataTransferLogger:62 - Potential Issue Found: Truncating disabled for this data type (SENTENCING_COURT) Record is : CommittoCrownCourtforTrial(Summary/EitherWayOffences) . Size is: 53 but maximum transfer size should be: 50
+1.60087E+12	 FATAL 2020-September-23 16:02:36,325 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 81523
+1.60087E+12	uk.co.bconline.ndelius.dss.filetransfer.exception.FileTransferException: Prisoner's data is not valid according to the consolidated prison file schema
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.validate(ConsolidatedPrisonFileWriterImpl.java:701)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parsePrisonDataFile(ConsolidatedPrisonFileWriterImpl.java:551)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.execute(FileTransfer.java:305)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.main(FileTransfer.java:133)"
+1.60087E+12	Caused by: javax.xml.bind.MarshalException
+1.60087E+12	 - with linked exception:
+1.60087E+12	[org.xml.sax.SAXParseException; lineNumber: 0; columnNumber: 0; cvc-maxLength-valid: Value 'CommittoCrownCourtforTrial(Summary/EitherWayOffences)' with length = '53' is not facet-valid with respect to maxLength '50' for type '#AnonType_sentencing_courtoffender'.]
+1.60087E+12	"	at com.sun.xml.internal.bind.v2.runtime.MarshallerImpl.write(MarshallerImpl.java:311)"
+1.60087E+12	"	at com.sun.xml.internal.bind.v2.runtime.MarshallerImpl.marshal(MarshallerImpl.java:236)"
+1.60087E+12	"	at javax.xml.bind.helpers.AbstractMarshallerImpl.marshal(AbstractMarshallerImpl.java:95)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.validate(ConsolidatedPrisonFileWriterImpl.java:696)"
+1.60087E+12	"	... 3 more"
+1.60087E+12	Caused by: org.xml.sax.SAXParseException; lineNumber: 0; columnNumber: 0; cvc-maxLength-valid: Value 'CommittoCrownCourtforTrial(Summary/EitherWayOffences)' with length = '53' is not facet-valid with respect to maxLength '50' for type '#AnonType_sentencing_courtoffender'.
+1.60087E+12	"	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:203)"
+1.60087E+12	"	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.error(ErrorHandlerWrapper.java:134)"
+1.60087E+12	"	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:396)"
+1.60087E+12	"	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:327)"
+1.60087E+12	"	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:284)"
+1.60087E+12	"	at com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator$XSIErrorReporter.reportError(XMLSchemaValidator.java:453)"
+1.60087E+12	"	at com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.reportSchemaError(XMLSchemaValidator.java:3231)"
+1.60087E+12	"	at com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.elementLocallyValidType(XMLSchemaValidator.java:3146)"
+1.60087E+12	"	at com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.processElementContent(XMLSchemaValidator.java:3056)"
+1.60087E+12	"	at com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.handleEndElement(XMLSchemaValidator.java:2135)"
+1.60087E+12	"	at com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.endElement(XMLSchemaValidator.java:854)"
+1.60087E+12	"	at com.sun.org.apache.xerces.internal.jaxp.validation.ValidatorHandlerImpl.endElement(ValidatorHandlerImpl.java:582)"
+1.60087E+12	"	at org.xml.sax.helpers.XMLFilterImpl.endElement(XMLFilterImpl.java:570)"
+1.60087E+12	"	at com.sun.xml.internal.bind.v2.runtime.output.SAXOutput.endTag(SAXOutput.java:117)"
+1.60087E+12	"	at com.sun.xml.internal.bind.v2.runtime.output.XmlOutputAbstractImpl.endTag(XmlOutputAbstractImpl.java:109)"
+1.60087E+12	"	at com.sun.xml.internal.bind.v2.runtime.output.ForkXmlOutput.endTag(ForkXmlOutput.java:76)"
+1.60087E+12	"	at com.sun.xml.internal.bind.v2.runtime.XMLSerializer.leafElement(XMLSerializer.java:317)"
+1.60087E+12	"	at com.sun.xml.internal.bind.v2.model.impl.RuntimeBuiltinLeafInfoImpl$StringImplImpl.writeLeafElement(RuntimeBuiltinLeafInfoImpl.java:1036)"
+1.60087E+12	"	at com.sun.xml.internal.bind.v2.model.impl.RuntimeBuiltinLeafInfoImpl$StringImplImpl.writeLeafElement(RuntimeBuiltinLeafInfoImpl.java:1015)"
+1.60087E+12	"	at com.sun.xml.internal.bind.v2.runtime.reflect.TransducedAccessor$CompositeTransducedAccessorImpl.writeLeafElement(TransducedAccessor.java:239)"
+1.60087E+12	"	at com.sun.xml.internal.bind.v2.runtime.property.SingleElementLeafProperty.serializeBody(SingleElementLeafProperty.java:115)"
+1.60087E+12	"	at com.sun.xml.internal.bind.v2.runtime.ClassBeanInfoImpl.serializeBody(ClassBeanInfoImpl.java:345)"
+1.60087E+12	"	at com.sun.xml.internal.bind.v2.runtime.XMLSerializer.childAsSoleContent(XMLSerializer.java:578)"
+1.60087E+12	"	at com.sun.xml.internal.bind.v2.runtime.ClassBeanInfoImpl.serializeRoot(ClassBeanInfoImpl.java:326)"
+1.60087E+12	"	at com.sun.xml.internal.bind.v2.runtime.XMLSerializer.childAsRoot(XMLSerializer.java:479)"
+1.60087E+12	"	at com.sun.xml.internal.bind.v2.runtime.MarshallerImpl.write(MarshallerImpl.java:308)"
+1.60087E+12	"	... 6 more"
+1.60087E+12	 FATAL 2020-September-23 16:02:36,350 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 81599
+1.60087E+12	uk.co.bconline.ndelius.dss.filetransfer.exception.FileTransferException: A date field was not in the expected format of dd/mm/yyyy
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:888)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.processRecord(ConsolidatedPrisonFileWriterImpl.java:823)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parsePrisonDataFile(ConsolidatedPrisonFileWriterImpl.java:548)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.execute(FileTransfer.java:305)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.main(FileTransfer.java:133)"
+1.60087E+12	Caused by: java.text.ParseException: Unparseable date: "Unemployedprisoners","WWI-OTHER-UNEMPLOYED","13","15","16","30"~"Unemployedprisoners","WWI-OTHER-UNEMPLOYED","07","30","11","30"
+1.60087E+12	"	at java.text.DateFormat.parse(DateFormat.java:366)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:878)"
+1.60087E+12	"	... 4 more"
+1.60087E+12	 FATAL 2020-September-23 16:02:36,378 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 81694
+1.60087E+12	uk.co.bconline.ndelius.dss.filetransfer.exception.FileTransferException: A date field was not in the expected format of dd/mm/yyyy
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:888)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.processRecord(ConsolidatedPrisonFileWriterImpl.java:823)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parsePrisonDataFile(ConsolidatedPrisonFileWriterImpl.java:548)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.execute(FileTransfer.java:305)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.main(FileTransfer.java:133)"
+1.60087E+12	Caused by: java.text.ParseException: Unparseable date: "TrinityDomestic-AM","WWI-RES-TRINITY-WOW","09","00","12","00"~"TrinityDomestic-PM","WWI-RES-TRINITY-WOW","14","00","17","00"
+1.60087E+12	"	at java.text.DateFormat.parse(DateFormat.java:366)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:878)"
+1.60087E+12	"	... 4 more"
+1.60087E+12	 FATAL 2020-September-23 16:02:36,391 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 81736
+1.60087E+12	uk.co.bconline.ndelius.dss.filetransfer.exception.FileTransferException: A date field was not in the expected format of dd/mm/yyyy
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:888)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.processRecord(ConsolidatedPrisonFileWriterImpl.java:823)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parsePrisonDataFile(ConsolidatedPrisonFileWriterImpl.java:548)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.execute(FileTransfer.java:305)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.main(FileTransfer.java:133)"
+1.60087E+12	Caused by: java.text.ParseException: Unparseable date: "TrinityPainter-AM","WWI-RES-TRINITY-WOW","09","00","12","00"~"TrinityPainter-PM","WWI-RES-TRINITY-WOW","14","00","17","00"
+1.60087E+12	"	at java.text.DateFormat.parse(DateFormat.java:366)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:878)"
+1.60087E+12	"	... 4 more"
+1.60087E+12	 FATAL 2020-September-23 16:02:36,403 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 81789
+1.60087E+12	uk.co.bconline.ndelius.dss.filetransfer.exception.FileTransferException: A date field was not in the expected format of dd/mm/yyyy
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:888)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.processRecord(ConsolidatedPrisonFileWriterImpl.java:823)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parsePrisonDataFile(ConsolidatedPrisonFileWriterImpl.java:548)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.execute(FileTransfer.java:305)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.main(FileTransfer.java:133)"
+1.60087E+12	Caused by: java.text.ParseException: Unparseable date: "K-Wingdomestic-AM","WWI-RES-KWING-WOW","08","30","11","30"~"K-Wingdomestic-PM","WWI-RES-KWING-WOW","13","30","16","30"
+1.60087E+12	"	at java.text.DateFormat.parse(DateFormat.java:366)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:878)"
+1.60087E+12	"	... 4 more"
+1.60087E+12	 FATAL 2020-September-23 16:02:36,418 PrisonDataTransferLogger:76 - An exception occurred when parsing data in P-NOMIS file at line number 81850
+1.60087E+12	uk.co.bconline.ndelius.dss.filetransfer.exception.FileTransferException: A date field was not in the expected format of dd/mm/yyyy
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:888)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.processRecord(ConsolidatedPrisonFileWriterImpl.java:823)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parsePrisonDataFile(ConsolidatedPrisonFileWriterImpl.java:548)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.execute(FileTransfer.java:305)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.FileTransfer.main(FileTransfer.java:133)"
+1.60087E+12	Caused by: java.text.ParseException: Unparseable date: "Unemployedprisoners","WWI-OTHER-UNEMPLOYED","07","30","11","30"~"Unemployedprisoners","WWI-OTHER-UNEMPLOYED","13","15","16","30"
+1.60087E+12	"	at java.text.DateFormat.parse(DateFormat.java:366)"
+1.60087E+12	"	at uk.co.bconline.ndelius.dss.filetransfer.impl.ConsolidatedPrisonFileWriterImpl.parseDateAsJAXBCalendar(ConsolidatedPrisonFileWriterImpl.java:878)"
+1.60087E+12	"	... 4 more"
+1.60087E+12	 WARN  2020-September-23 16:02:36,480 PrisonDataTransferLogger:62 - 
+1.60087E+12	###############################################################
+1.60087E+12	 Record Validation Issues were found. Please review the log file.
+1.60087E+12	###############################################################
+1.60087E+12	 INFO  2020-September-23 16:02:40,347 PrisonDataTransferLogger:121 - OFFLOC file processed - application terminating.
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60087E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Waiting for FileImporter process to finish
+1.60088E+12	Checking FileImporter log file '/dss/fileimporter/fileimporter.log' exists.
+1.60088E+12	/dss/fileimporter/fileimporter.log exists.
+1.60088E+12	FileImporter Logs follow:
+1.60088E+12	 INFO  2020-September-23 16:02:39,564 PrisonDataTransferLogger:121 - Starting File Importer application.
+1.60088E+12	 INFO  2020-September-23 16:02:39,566 PrisonDataTransferLogger:121 - Validating FileImporter.properties configuration file...
+1.60088E+12	 INFO  2020-September-23 16:02:39,617 PrisonDataTransferLogger:121 - FileImporter.properties successfully validated - beginning processing.
+1.60088E+12	 INFO  2020-September-23 16:03:46,669 PrisonDataTransferLogger:121 - Error processing data for prison : ACI
+1.60088E+12	 FATAL 2020-September-23 16:03:46,670 PrisonDataTransferLogger:50 - Unable to send the SOAP request to DSS Web Service
+1.60088E+12	uk.co.bconline.ndelius.dss.fileimporter.exception.FileImporterException: Unable to send the SOAP request to DSS Web Service
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.createAndSendSOAPMessages(FileImporter.java:409)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.execute(FileImporter.java:194)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.main(FileImporter.java:115)"
+1.60088E+12	Caused by: com.sun.xml.internal.ws.client.ClientTransportException: The server sent HTTP status code 504: Gateway Time-out
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.checkStatusCode(HttpTransportPipe.java:310)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.createResponsePacket(HttpTransportPipe.java:259)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.process(HttpTransportPipe.java:217)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.processRequest(HttpTransportPipe.java:130)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.DeferredTransportPipe.processRequest(DeferredTransportPipe.java:124)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.__doRun(Fiber.java:1121)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber._doRun(Fiber.java:1035)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.doRun(Fiber.java:1004)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.runSync(Fiber.java:862)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.Stub.process(Stub.java:448)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SEIStub.doProcess(SEIStub.java:178)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SyncMethodHandler.invoke(SyncMethodHandler.java:93)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SyncMethodHandler.invoke(SyncMethodHandler.java:77)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SEIStub.invoke(SEIStub.java:147)"
+1.60088E+12	"	at com.sun.proxy.$Proxy30.updateOffender(Unknown Source)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.SOAPMessageHandler.sendSOAPRequest(SOAPMessageHandler.java:89)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.createAndSendSOAPMessages(FileImporter.java:394)"
+1.60088E+12	"	... 2 more"
+1.60088E+12	 INFO  2020-September-23 16:03:48,898 PrisonDataTransferLogger:121 - Data transferred successfully for prison : AGI
+1.60088E+12	 INFO  2020-September-23 16:04:14,389 PrisonDataTransferLogger:121 - Data transferred successfully for prison : ASI
+1.60088E+12	 INFO  2020-September-23 16:04:25,525 PrisonDataTransferLogger:121 - Data transferred successfully for prison : AYI
+1.60088E+12	 INFO  2020-September-23 16:04:44,167 PrisonDataTransferLogger:121 - Data transferred successfully for prison : BAI
+1.60088E+12	 INFO  2020-September-23 16:05:13,394 PrisonDataTransferLogger:121 - Data transferred successfully for prison : BCI
+1.60088E+12	 INFO  2020-September-23 16:05:32,593 PrisonDataTransferLogger:121 - Data transferred successfully for prison : BFI
+1.60088E+12	 INFO  2020-September-23 16:05:45,052 PrisonDataTransferLogger:121 - Data transferred successfully for prison : BLI
+1.60088E+12	 INFO  2020-September-23 16:06:42,868 PrisonDataTransferLogger:121 - Data transferred successfully for prison : BMI
+1.60088E+12	 INFO  2020-September-23 16:07:42,900 PrisonDataTransferLogger:121 - Error processing data for prison : BNI
+1.60088E+12	 FATAL 2020-September-23 16:07:42,900 PrisonDataTransferLogger:50 - Unable to send the SOAP request to DSS Web Service
+1.60088E+12	uk.co.bconline.ndelius.dss.fileimporter.exception.FileImporterException: Unable to send the SOAP request to DSS Web Service
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.createAndSendSOAPMessages(FileImporter.java:409)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.execute(FileImporter.java:194)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.main(FileImporter.java:115)"
+1.60088E+12	Caused by: com.sun.xml.internal.ws.client.ClientTransportException: The server sent HTTP status code 504: Gateway Time-out
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.checkStatusCode(HttpTransportPipe.java:310)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.createResponsePacket(HttpTransportPipe.java:259)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.process(HttpTransportPipe.java:217)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.processRequest(HttpTransportPipe.java:130)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.DeferredTransportPipe.processRequest(DeferredTransportPipe.java:95)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.__doRun(Fiber.java:1121)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber._doRun(Fiber.java:1035)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.doRun(Fiber.java:1004)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.runSync(Fiber.java:862)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.Stub.process(Stub.java:448)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SEIStub.doProcess(SEIStub.java:178)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SyncMethodHandler.invoke(SyncMethodHandler.java:93)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SyncMethodHandler.invoke(SyncMethodHandler.java:77)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SEIStub.invoke(SEIStub.java:147)"
+1.60088E+12	"	at com.sun.proxy.$Proxy30.updateOffender(Unknown Source)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.SOAPMessageHandler.sendSOAPRequest(SOAPMessageHandler.java:89)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.createAndSendSOAPMessages(FileImporter.java:394)"
+1.60088E+12	"	... 2 more"
+1.60088E+12	 INFO  2020-September-23 16:08:00,241 PrisonDataTransferLogger:121 - Data transferred successfully for prison : BRI
+1.60088E+12	 INFO  2020-September-23 16:08:34,362 PrisonDataTransferLogger:121 - Data transferred successfully for prison : BSI
+1.60088E+12	 INFO  2020-September-23 16:09:34,429 PrisonDataTransferLogger:121 - Error processing data for prison : BWI
+1.60088E+12	 FATAL 2020-September-23 16:09:34,429 PrisonDataTransferLogger:50 - Unable to send the SOAP request to DSS Web Service
+1.60088E+12	uk.co.bconline.ndelius.dss.fileimporter.exception.FileImporterException: Unable to send the SOAP request to DSS Web Service
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.createAndSendSOAPMessages(FileImporter.java:409)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.execute(FileImporter.java:194)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.main(FileImporter.java:115)"
+1.60088E+12	Caused by: com.sun.xml.internal.ws.client.ClientTransportException: The server sent HTTP status code 504: Gateway Time-out
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.checkStatusCode(HttpTransportPipe.java:310)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.createResponsePacket(HttpTransportPipe.java:259)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.process(HttpTransportPipe.java:217)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.processRequest(HttpTransportPipe.java:130)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.DeferredTransportPipe.processRequest(DeferredTransportPipe.java:95)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.__doRun(Fiber.java:1121)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber._doRun(Fiber.java:1035)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.doRun(Fiber.java:1004)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.runSync(Fiber.java:862)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.Stub.process(Stub.java:448)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SEIStub.doProcess(SEIStub.java:178)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SyncMethodHandler.invoke(SyncMethodHandler.java:93)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SyncMethodHandler.invoke(SyncMethodHandler.java:77)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SEIStub.invoke(SEIStub.java:147)"
+1.60088E+12	"	at com.sun.proxy.$Proxy30.updateOffender(Unknown Source)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.SOAPMessageHandler.sendSOAPRequest(SOAPMessageHandler.java:89)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.createAndSendSOAPMessages(FileImporter.java:394)"
+1.60088E+12	"	... 2 more"
+1.60088E+12	 INFO  2020-September-23 16:09:59,891 PrisonDataTransferLogger:121 - Data transferred successfully for prison : BXI
+1.60088E+12	 INFO  2020-September-23 16:10:33,466 PrisonDataTransferLogger:121 - Data transferred successfully for prison : BZI
+1.60088E+12	 INFO  2020-September-23 16:11:16,331 PrisonDataTransferLogger:121 - Data transferred successfully for prison : CDI
+1.60088E+12	 INFO  2020-September-23 16:11:30,381 PrisonDataTransferLogger:121 - Data transferred successfully for prison : CFI
+1.60088E+12	 INFO  2020-September-23 16:11:41,058 PrisonDataTransferLogger:121 - Data transferred successfully for prison : CKI
+1.60088E+12	 INFO  2020-September-23 16:12:01,346 PrisonDataTransferLogger:121 - Data transferred successfully for prison : CLI
+1.60088E+12	 INFO  2020-September-23 16:12:16,018 PrisonDataTransferLogger:121 - Data transferred successfully for prison : CWI
+1.60088E+12	 INFO  2020-September-23 16:12:46,794 PrisonDataTransferLogger:121 - Data transferred successfully for prison : DAI
+1.60088E+12	 INFO  2020-September-23 16:13:46,827 PrisonDataTransferLogger:121 - Error processing data for prison : DGI
+1.60088E+12	 FATAL 2020-September-23 16:13:46,827 PrisonDataTransferLogger:50 - Unable to send the SOAP request to DSS Web Service
+1.60088E+12	uk.co.bconline.ndelius.dss.fileimporter.exception.FileImporterException: Unable to send the SOAP request to DSS Web Service
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.createAndSendSOAPMessages(FileImporter.java:409)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.execute(FileImporter.java:194)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.main(FileImporter.java:115)"
+1.60088E+12	Caused by: com.sun.xml.internal.ws.client.ClientTransportException: The server sent HTTP status code 504: Gateway Time-out
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.checkStatusCode(HttpTransportPipe.java:310)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.createResponsePacket(HttpTransportPipe.java:259)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.process(HttpTransportPipe.java:217)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.processRequest(HttpTransportPipe.java:130)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.DeferredTransportPipe.processRequest(DeferredTransportPipe.java:95)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.__doRun(Fiber.java:1121)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber._doRun(Fiber.java:1035)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.doRun(Fiber.java:1004)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.runSync(Fiber.java:862)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.Stub.process(Stub.java:448)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SEIStub.doProcess(SEIStub.java:178)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SyncMethodHandler.invoke(SyncMethodHandler.java:93)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SyncMethodHandler.invoke(SyncMethodHandler.java:77)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SEIStub.invoke(SEIStub.java:147)"
+1.60088E+12	"	at com.sun.proxy.$Proxy30.updateOffender(Unknown Source)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.SOAPMessageHandler.sendSOAPRequest(SOAPMessageHandler.java:89)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.createAndSendSOAPMessages(FileImporter.java:394)"
+1.60088E+12	"	... 2 more"
+1.60088E+12	 INFO  2020-September-23 16:13:51,324 PrisonDataTransferLogger:121 - Data transferred successfully for prison : DHI
+1.60088E+12	 INFO  2020-September-23 16:14:41,278 PrisonDataTransferLogger:121 - Data transferred successfully for prison : DMI
+1.60088E+12	 INFO  2020-September-23 16:15:41,250 PrisonDataTransferLogger:121 - Data transferred successfully for prison : DNI
+1.60088E+12	 INFO  2020-September-23 16:15:47,222 PrisonDataTransferLogger:121 - Data transferred successfully for prison : DTI
+1.60088E+12	 INFO  2020-September-23 16:15:59,071 PrisonDataTransferLogger:121 - Data transferred successfully for prison : DWI
+1.60088E+12	 INFO  2020-September-23 16:16:26,854 PrisonDataTransferLogger:121 - Data transferred successfully for prison : EEI
+1.60088E+12	 INFO  2020-September-23 16:16:41,989 PrisonDataTransferLogger:121 - Data transferred successfully for prison : EHI
+1.60088E+12	 INFO  2020-September-23 16:16:47,585 PrisonDataTransferLogger:121 - Data transferred successfully for prison : ESI
+1.60088E+12	 INFO  2020-September-23 16:17:09,297 PrisonDataTransferLogger:121 - Data transferred successfully for prison : EWI
+1.60088E+12	 INFO  2020-September-23 16:17:24,292 PrisonDataTransferLogger:121 - Data transferred successfully for prison : EXI
+1.60088E+12	 INFO  2020-September-23 16:18:24,329 PrisonDataTransferLogger:121 - Error processing data for prison : EYI
+1.60088E+12	 FATAL 2020-September-23 16:18:24,329 PrisonDataTransferLogger:50 - Unable to send the SOAP request to DSS Web Service
+1.60088E+12	uk.co.bconline.ndelius.dss.fileimporter.exception.FileImporterException: Unable to send the SOAP request to DSS Web Service
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.createAndSendSOAPMessages(FileImporter.java:409)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.execute(FileImporter.java:194)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.main(FileImporter.java:115)"
+1.60088E+12	Caused by: com.sun.xml.internal.ws.client.ClientTransportException: The server sent HTTP status code 504: Gateway Time-out
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.checkStatusCode(HttpTransportPipe.java:310)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.createResponsePacket(HttpTransportPipe.java:259)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.process(HttpTransportPipe.java:217)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.processRequest(HttpTransportPipe.java:130)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.DeferredTransportPipe.processRequest(DeferredTransportPipe.java:95)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.__doRun(Fiber.java:1121)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber._doRun(Fiber.java:1035)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.doRun(Fiber.java:1004)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.runSync(Fiber.java:862)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.Stub.process(Stub.java:448)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SEIStub.doProcess(SEIStub.java:178)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SyncMethodHandler.invoke(SyncMethodHandler.java:93)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SyncMethodHandler.invoke(SyncMethodHandler.java:77)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SEIStub.invoke(SEIStub.java:147)"
+1.60088E+12	"	at com.sun.proxy.$Proxy30.updateOffender(Unknown Source)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.SOAPMessageHandler.sendSOAPRequest(SOAPMessageHandler.java:89)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.createAndSendSOAPMessages(FileImporter.java:394)"
+1.60088E+12	"	... 2 more"
+1.60088E+12	 INFO  2020-September-23 16:19:24,383 PrisonDataTransferLogger:121 - Error processing data for prison : FBI
+1.60088E+12	 FATAL 2020-September-23 16:19:24,383 PrisonDataTransferLogger:50 - Unable to send the SOAP request to DSS Web Service
+1.60088E+12	uk.co.bconline.ndelius.dss.fileimporter.exception.FileImporterException: Unable to send the SOAP request to DSS Web Service
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.createAndSendSOAPMessages(FileImporter.java:409)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.execute(FileImporter.java:194)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.main(FileImporter.java:115)"
+1.60088E+12	Caused by: com.sun.xml.internal.ws.client.ClientTransportException: The server sent HTTP status code 504: Gateway Time-out
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.checkStatusCode(HttpTransportPipe.java:310)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.createResponsePacket(HttpTransportPipe.java:259)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.process(HttpTransportPipe.java:217)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.processRequest(HttpTransportPipe.java:130)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.DeferredTransportPipe.processRequest(DeferredTransportPipe.java:95)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.__doRun(Fiber.java:1121)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber._doRun(Fiber.java:1035)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.doRun(Fiber.java:1004)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.runSync(Fiber.java:862)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.Stub.process(Stub.java:448)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SEIStub.doProcess(SEIStub.java:178)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SyncMethodHandler.invoke(SyncMethodHandler.java:93)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SyncMethodHandler.invoke(SyncMethodHandler.java:77)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SEIStub.invoke(SEIStub.java:147)"
+1.60088E+12	"	at com.sun.proxy.$Proxy30.updateOffender(Unknown Source)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.SOAPMessageHandler.sendSOAPRequest(SOAPMessageHandler.java:89)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.createAndSendSOAPMessages(FileImporter.java:394)"
+1.60088E+12	"	... 2 more"
+1.60088E+12	 INFO  2020-September-23 16:19:33,540 PrisonDataTransferLogger:121 - Data transferred successfully for prison : FDI
+1.60088E+12	 INFO  2020-September-23 16:19:52,059 PrisonDataTransferLogger:121 - Data transferred successfully for prison : FHI
+1.60088E+12	 INFO  2020-September-23 16:20:45,024 PrisonDataTransferLogger:121 - Data transferred successfully for prison : FKI
+1.60088E+12	 INFO  2020-September-23 16:20:54,115 PrisonDataTransferLogger:121 - Data transferred successfully for prison : FMI
+1.60088E+12	 INFO  2020-September-23 16:21:32,199 PrisonDataTransferLogger:121 - Data transferred successfully for prison : FNI
+1.60088E+12	 INFO  2020-September-23 16:22:07,630 PrisonDataTransferLogger:121 - Data transferred successfully for prison : FSI
+1.60088E+12	 INFO  2020-September-23 16:22:09,283 PrisonDataTransferLogger:121 - Data transferred successfully for prison : FYI
+1.60088E+12	 INFO  2020-September-23 16:22:52,337 PrisonDataTransferLogger:121 - Data transferred successfully for prison : GHI
+1.60088E+12	 INFO  2020-September-23 16:23:20,813 PrisonDataTransferLogger:121 - Data transferred successfully for prison : GMI
+1.60088E+12	 INFO  2020-September-23 16:23:23,887 PrisonDataTransferLogger:121 - Data transferred successfully for prison : GNI
+1.60088E+12	 INFO  2020-September-23 16:23:59,166 PrisonDataTransferLogger:121 - Data transferred successfully for prison : GTI
+1.60088E+12	 INFO  2020-September-23 16:24:28,409 PrisonDataTransferLogger:121 - Data transferred successfully for prison : HBI
+1.60088E+12	 INFO  2020-September-23 16:24:36,730 PrisonDataTransferLogger:121 - Data transferred successfully for prison : HCI
+1.60088E+12	 INFO  2020-September-23 16:24:55,098 PrisonDataTransferLogger:121 - Data transferred successfully for prison : HDI
+1.60088E+12	 INFO  2020-September-23 16:25:38,891 PrisonDataTransferLogger:121 - Data transferred successfully for prison : HEI
+1.60088E+12	 INFO  2020-September-23 16:25:52,918 PrisonDataTransferLogger:121 - Data transferred successfully for prison : HHI
+1.60088E+12	 INFO  2020-September-23 16:26:22,565 PrisonDataTransferLogger:121 - Data transferred successfully for prison : HII
+1.60088E+12	 INFO  2020-September-23 16:27:14,026 PrisonDataTransferLogger:121 - Data transferred successfully for prison : HLI
+1.60088E+12	 INFO  2020-September-23 16:27:29,898 PrisonDataTransferLogger:121 - Data transferred successfully for prison : HMI
+1.60088E+12	 INFO  2020-September-23 16:28:29,927 PrisonDataTransferLogger:121 - Error processing data for prison : HOI
+1.60088E+12	 FATAL 2020-September-23 16:28:29,927 PrisonDataTransferLogger:50 - Unable to send the SOAP request to DSS Web Service
+1.60088E+12	uk.co.bconline.ndelius.dss.fileimporter.exception.FileImporterException: Unable to send the SOAP request to DSS Web Service
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.createAndSendSOAPMessages(FileImporter.java:409)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.execute(FileImporter.java:194)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.main(FileImporter.java:115)"
+1.60088E+12	Caused by: com.sun.xml.internal.ws.client.ClientTransportException: The server sent HTTP status code 504: Gateway Time-out
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.checkStatusCode(HttpTransportPipe.java:310)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.createResponsePacket(HttpTransportPipe.java:259)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.process(HttpTransportPipe.java:217)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.processRequest(HttpTransportPipe.java:130)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.DeferredTransportPipe.processRequest(DeferredTransportPipe.java:95)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.__doRun(Fiber.java:1121)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber._doRun(Fiber.java:1035)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.doRun(Fiber.java:1004)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.runSync(Fiber.java:862)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.Stub.process(Stub.java:448)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SEIStub.doProcess(SEIStub.java:178)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SyncMethodHandler.invoke(SyncMethodHandler.java:93)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SyncMethodHandler.invoke(SyncMethodHandler.java:77)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SEIStub.invoke(SEIStub.java:147)"
+1.60088E+12	"	at com.sun.proxy.$Proxy30.updateOffender(Unknown Source)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.SOAPMessageHandler.sendSOAPRequest(SOAPMessageHandler.java:89)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.createAndSendSOAPMessages(FileImporter.java:394)"
+1.60088E+12	"	... 2 more"
+1.60088E+12	 INFO  2020-September-23 16:29:29,978 PrisonDataTransferLogger:121 - Error processing data for prison : HPI
+1.60088E+12	 FATAL 2020-September-23 16:29:29,979 PrisonDataTransferLogger:50 - Unable to send the SOAP request to DSS Web Service
+1.60088E+12	uk.co.bconline.ndelius.dss.fileimporter.exception.FileImporterException: Unable to send the SOAP request to DSS Web Service
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.createAndSendSOAPMessages(FileImporter.java:409)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.execute(FileImporter.java:194)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.main(FileImporter.java:115)"
+1.60088E+12	Caused by: com.sun.xml.internal.ws.client.ClientTransportException: The server sent HTTP status code 504: Gateway Time-out
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.checkStatusCode(HttpTransportPipe.java:310)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.createResponsePacket(HttpTransportPipe.java:259)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.process(HttpTransportPipe.java:217)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.processRequest(HttpTransportPipe.java:130)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.DeferredTransportPipe.processRequest(DeferredTransportPipe.java:95)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.__doRun(Fiber.java:1121)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber._doRun(Fiber.java:1035)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.doRun(Fiber.java:1004)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.runSync(Fiber.java:862)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.Stub.process(Stub.java:448)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SEIStub.doProcess(SEIStub.java:178)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SyncMethodHandler.invoke(SyncMethodHandler.java:93)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SyncMethodHandler.invoke(SyncMethodHandler.java:77)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SEIStub.invoke(SEIStub.java:147)"
+1.60088E+12	"	at com.sun.proxy.$Proxy30.updateOffender(Unknown Source)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.SOAPMessageHandler.sendSOAPRequest(SOAPMessageHandler.java:89)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.createAndSendSOAPMessages(FileImporter.java:394)"
+1.60088E+12	"	... 2 more"
+1.60088E+12	 INFO  2020-September-23 16:29:35,360 PrisonDataTransferLogger:121 - Data transferred successfully for prison : HVI
+1.60088E+12	 INFO  2020-September-23 16:30:04,189 PrisonDataTransferLogger:121 - Data transferred successfully for prison : ISI
+1.60088E+12	 INFO  2020-September-23 16:30:45,933 PrisonDataTransferLogger:121 - Data transferred successfully for prison : IWI
+1.60088E+12	 INFO  2020-September-23 16:30:59,493 PrisonDataTransferLogger:121 - Data transferred successfully for prison : KMI
+1.60088E+12	 INFO  2020-September-23 16:31:16,828 PrisonDataTransferLogger:121 - Data transferred successfully for prison : KVI
+1.60088E+12	 INFO  2020-September-23 16:31:38,537 PrisonDataTransferLogger:121 - Data transferred successfully for prison : LCI
+1.60088E+12	 INFO  2020-September-23 16:32:01,040 PrisonDataTransferLogger:121 - Data transferred successfully for prison : LEI
+1.60088E+12	 INFO  2020-September-23 16:32:31,642 PrisonDataTransferLogger:121 - Data transferred successfully for prison : LFI
+1.60088E+12	 INFO  2020-September-23 16:33:20,767 PrisonDataTransferLogger:121 - Data transferred successfully for prison : LGI
+1.60088E+12	 INFO  2020-September-23 16:33:43,763 PrisonDataTransferLogger:121 - Data transferred successfully for prison : LHI
+1.60088E+12	 INFO  2020-September-23 16:34:18,394 PrisonDataTransferLogger:121 - Data transferred successfully for prison : LII
+1.60088E+12	 INFO  2020-September-23 16:34:47,555 PrisonDataTransferLogger:121 - Data transferred successfully for prison : LLI
+1.60088E+12	 INFO  2020-September-23 16:34:52,991 PrisonDataTransferLogger:121 - Data transferred successfully for prison : LNI
+1.60088E+12	 INFO  2020-September-23 16:35:40,738 PrisonDataTransferLogger:121 - Data transferred successfully for prison : LPI
+1.60088E+12	 INFO  2020-September-23 16:36:28,851 PrisonDataTransferLogger:121 - Data transferred successfully for prison : LTI
+1.60088E+12	 INFO  2020-September-23 16:36:39,333 PrisonDataTransferLogger:121 - Data transferred successfully for prison : LWI
+1.60088E+12	 INFO  2020-September-23 16:37:15,556 PrisonDataTransferLogger:121 - Data transferred successfully for prison : LYI
+1.60088E+12	 INFO  2020-September-23 16:38:10,845 PrisonDataTransferLogger:121 - Data transferred successfully for prison : MDI
+1.60088E+12	 INFO  2020-September-23 16:38:14,716 PrisonDataTransferLogger:121 - Data transferred successfully for prison : MHI
+1.60088E+12	 INFO  2020-September-23 16:38:55,367 PrisonDataTransferLogger:121 - Data transferred successfully for prison : MRI
+1.60088E+12	 INFO  2020-September-23 16:39:33,186 PrisonDataTransferLogger:121 - Data transferred successfully for prison : MSI
+1.60088E+12	 INFO  2020-September-23 16:40:08,346 PrisonDataTransferLogger:121 - Data transferred successfully for prison : MTI
+1.60088E+12	 INFO  2020-September-23 16:40:36,361 PrisonDataTransferLogger:121 - Data transferred successfully for prison : NHI
+1.60088E+12	 INFO  2020-September-23 16:41:36,406 PrisonDataTransferLogger:121 - Error processing data for prison : NLI
+1.60088E+12	 FATAL 2020-September-23 16:41:36,406 PrisonDataTransferLogger:50 - Unable to send the SOAP request to DSS Web Service
+1.60088E+12	uk.co.bconline.ndelius.dss.fileimporter.exception.FileImporterException: Unable to send the SOAP request to DSS Web Service
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.createAndSendSOAPMessages(FileImporter.java:409)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.execute(FileImporter.java:194)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.main(FileImporter.java:115)"
+1.60088E+12	Caused by: com.sun.xml.internal.ws.client.ClientTransportException: The server sent HTTP status code 504: Gateway Time-out
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.checkStatusCode(HttpTransportPipe.java:310)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.createResponsePacket(HttpTransportPipe.java:259)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.process(HttpTransportPipe.java:217)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.processRequest(HttpTransportPipe.java:130)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.DeferredTransportPipe.processRequest(DeferredTransportPipe.java:95)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.__doRun(Fiber.java:1121)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber._doRun(Fiber.java:1035)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.doRun(Fiber.java:1004)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.runSync(Fiber.java:862)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.Stub.process(Stub.java:448)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SEIStub.doProcess(SEIStub.java:178)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SyncMethodHandler.invoke(SyncMethodHandler.java:93)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SyncMethodHandler.invoke(SyncMethodHandler.java:77)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SEIStub.invoke(SEIStub.java:147)"
+1.60088E+12	"	at com.sun.proxy.$Proxy30.updateOffender(Unknown Source)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.SOAPMessageHandler.sendSOAPRequest(SOAPMessageHandler.java:89)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.createAndSendSOAPMessages(FileImporter.java:394)"
+1.60088E+12	"	... 2 more"
+1.60088E+12	 INFO  2020-September-23 16:42:06,176 PrisonDataTransferLogger:121 - Data transferred successfully for prison : NMI
+1.60088E+12	 INFO  2020-September-23 16:42:26,689 PrisonDataTransferLogger:121 - Data transferred successfully for prison : NSI
+1.60088E+12	 INFO  2020-September-23 16:43:08,456 PrisonDataTransferLogger:121 - Data transferred successfully for prison : NWI
+1.60088E+12	 INFO  2020-September-23 16:43:27,868 PrisonDataTransferLogger:121 - Data transferred successfully for prison : ONI
+1.60088E+12	 INFO  2020-September-23 16:44:27,934 PrisonDataTransferLogger:121 - Error processing data for prison : OUT
+1.60088E+12	 FATAL 2020-September-23 16:44:27,935 PrisonDataTransferLogger:50 - Unable to send the SOAP request to DSS Web Service
+1.60088E+12	uk.co.bconline.ndelius.dss.fileimporter.exception.FileImporterException: Unable to send the SOAP request to DSS Web Service
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.createAndSendSOAPMessages(FileImporter.java:409)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.execute(FileImporter.java:194)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.main(FileImporter.java:115)"
+1.60088E+12	Caused by: com.sun.xml.internal.ws.client.ClientTransportException: The server sent HTTP status code 504: Gateway Time-out
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.checkStatusCode(HttpTransportPipe.java:310)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.createResponsePacket(HttpTransportPipe.java:259)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.process(HttpTransportPipe.java:217)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.processRequest(HttpTransportPipe.java:130)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.DeferredTransportPipe.processRequest(DeferredTransportPipe.java:95)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.__doRun(Fiber.java:1121)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber._doRun(Fiber.java:1035)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.doRun(Fiber.java:1004)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.runSync(Fiber.java:862)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.Stub.process(Stub.java:448)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SEIStub.doProcess(SEIStub.java:178)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SyncMethodHandler.invoke(SyncMethodHandler.java:93)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SyncMethodHandler.invoke(SyncMethodHandler.java:77)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SEIStub.invoke(SEIStub.java:147)"
+1.60088E+12	"	at com.sun.proxy.$Proxy30.updateOffender(Unknown Source)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.SOAPMessageHandler.sendSOAPRequest(SOAPMessageHandler.java:89)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.createAndSendSOAPMessages(FileImporter.java:394)"
+1.60088E+12	"	... 2 more"
+1.60088E+12	 INFO  2020-September-23 16:45:28,000 PrisonDataTransferLogger:121 - Error processing data for prison : OWI
+1.60088E+12	 FATAL 2020-September-23 16:45:28,000 PrisonDataTransferLogger:50 - Unable to send the SOAP request to DSS Web Service
+1.60088E+12	uk.co.bconline.ndelius.dss.fileimporter.exception.FileImporterException: Unable to send the SOAP request to DSS Web Service
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.createAndSendSOAPMessages(FileImporter.java:409)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.execute(FileImporter.java:194)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.main(FileImporter.java:115)"
+1.60088E+12	Caused by: com.sun.xml.internal.ws.client.ClientTransportException: The server sent HTTP status code 504: Gateway Time-out
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.checkStatusCode(HttpTransportPipe.java:310)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.createResponsePacket(HttpTransportPipe.java:259)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.process(HttpTransportPipe.java:217)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.processRequest(HttpTransportPipe.java:130)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.DeferredTransportPipe.processRequest(DeferredTransportPipe.java:95)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.__doRun(Fiber.java:1121)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber._doRun(Fiber.java:1035)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.doRun(Fiber.java:1004)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.runSync(Fiber.java:862)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.Stub.process(Stub.java:448)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SEIStub.doProcess(SEIStub.java:178)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SyncMethodHandler.invoke(SyncMethodHandler.java:93)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SyncMethodHandler.invoke(SyncMethodHandler.java:77)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SEIStub.invoke(SEIStub.java:147)"
+1.60088E+12	"	at com.sun.proxy.$Proxy30.updateOffender(Unknown Source)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.SOAPMessageHandler.sendSOAPRequest(SOAPMessageHandler.java:89)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.createAndSendSOAPMessages(FileImporter.java:394)"
+1.60088E+12	"	... 2 more"
+1.60088E+12	 INFO  2020-September-23 16:45:52,502 PrisonDataTransferLogger:121 - Data transferred successfully for prison : PBI
+1.60088E+12	 INFO  2020-September-23 16:46:20,779 PrisonDataTransferLogger:121 - Data transferred successfully for prison : PDI
+1.60088E+12	 INFO  2020-September-23 16:46:39,062 PrisonDataTransferLogger:121 - Data transferred successfully for prison : PFI
+1.60088E+12	 INFO  2020-September-23 16:46:49,568 PrisonDataTransferLogger:121 - Data transferred successfully for prison : PNI
+1.60088E+12	 INFO  2020-September-23 16:47:49,615 PrisonDataTransferLogger:121 - Error processing data for prison : PRI
+1.60088E+12	 FATAL 2020-September-23 16:47:49,615 PrisonDataTransferLogger:50 - Unable to send the SOAP request to DSS Web Service
+1.60088E+12	uk.co.bconline.ndelius.dss.fileimporter.exception.FileImporterException: Unable to send the SOAP request to DSS Web Service
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.createAndSendSOAPMessages(FileImporter.java:409)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.execute(FileImporter.java:194)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.main(FileImporter.java:115)"
+1.60088E+12	Caused by: com.sun.xml.internal.ws.client.ClientTransportException: The server sent HTTP status code 504: Gateway Time-out
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.checkStatusCode(HttpTransportPipe.java:310)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.createResponsePacket(HttpTransportPipe.java:259)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.process(HttpTransportPipe.java:217)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.processRequest(HttpTransportPipe.java:130)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.DeferredTransportPipe.processRequest(DeferredTransportPipe.java:95)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.__doRun(Fiber.java:1121)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber._doRun(Fiber.java:1035)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.doRun(Fiber.java:1004)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.runSync(Fiber.java:862)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.Stub.process(Stub.java:448)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SEIStub.doProcess(SEIStub.java:178)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SyncMethodHandler.invoke(SyncMethodHandler.java:93)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SyncMethodHandler.invoke(SyncMethodHandler.java:77)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SEIStub.invoke(SEIStub.java:147)"
+1.60088E+12	"	at com.sun.proxy.$Proxy30.updateOffender(Unknown Source)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.SOAPMessageHandler.sendSOAPRequest(SOAPMessageHandler.java:89)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.createAndSendSOAPMessages(FileImporter.java:394)"
+1.60088E+12	"	... 2 more"
+1.60088E+12	 INFO  2020-September-23 16:48:38,051 PrisonDataTransferLogger:121 - Data transferred successfully for prison : PVI
+1.60088E+12	 INFO  2020-September-23 16:48:49,609 PrisonDataTransferLogger:121 - Data transferred successfully for prison : RCI
+1.60088E+12	 INFO  2020-September-23 16:49:28,658 PrisonDataTransferLogger:121 - Data transferred successfully for prison : RHI
+1.60088E+12	 INFO  2020-September-23 16:50:17,168 PrisonDataTransferLogger:121 - Data transferred successfully for prison : RNI
+1.60088E+12	 INFO  2020-September-23 16:50:33,159 PrisonDataTransferLogger:121 - Data transferred successfully for prison : RSI
+1.60088E+12	 INFO  2020-September-23 16:50:46,245 PrisonDataTransferLogger:121 - Data transferred successfully for prison : SDI
+1.60088E+12	 INFO  2020-September-23 16:51:20,766 PrisonDataTransferLogger:121 - Data transferred successfully for prison : SFI
+1.60088E+12	 INFO  2020-September-23 16:51:32,520 PrisonDataTransferLogger:121 - Data transferred successfully for prison : SHI
+1.60088E+12	 INFO  2020-September-23 16:52:27,274 PrisonDataTransferLogger:121 - Data transferred successfully for prison : SKI
+1.60088E+12	 INFO  2020-September-23 16:53:20,455 PrisonDataTransferLogger:121 - Data transferred successfully for prison : SLI
+1.60088E+12	 INFO  2020-September-23 16:53:30,916 PrisonDataTransferLogger:121 - Data transferred successfully for prison : SNI
+1.60088E+12	 INFO  2020-September-23 16:53:46,957 PrisonDataTransferLogger:121 - Data transferred successfully for prison : SPI
+1.60088E+12	 INFO  2020-September-23 16:54:05,023 PrisonDataTransferLogger:121 - Data transferred successfully for prison : STI
+1.60088E+12	 INFO  2020-September-23 16:54:13,219 PrisonDataTransferLogger:121 - Data transferred successfully for prison : SUI
+1.60088E+12	 INFO  2020-September-23 16:54:32,382 PrisonDataTransferLogger:121 - Data transferred successfully for prison : SWI
+1.60088E+12	 INFO  2020-September-23 16:54:47,772 PrisonDataTransferLogger:121 - Data transferred successfully for prison : TCI
+1.60088E+12	 INFO  2020-September-23 16:54:49,479 PrisonDataTransferLogger:121 - Data transferred successfully for prison : TRN
+1.60088E+12	 INFO  2020-September-23 16:55:49,504 PrisonDataTransferLogger:121 - Error processing data for prison : TSI
+1.60088E+12	 FATAL 2020-September-23 16:55:49,505 PrisonDataTransferLogger:50 - Unable to send the SOAP request to DSS Web Service
+1.60088E+12	uk.co.bconline.ndelius.dss.fileimporter.exception.FileImporterException: Unable to send the SOAP request to DSS Web Service
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.createAndSendSOAPMessages(FileImporter.java:409)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.execute(FileImporter.java:194)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.main(FileImporter.java:115)"
+1.60088E+12	Caused by: com.sun.xml.internal.ws.client.ClientTransportException: The server sent HTTP status code 504: Gateway Time-out
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.checkStatusCode(HttpTransportPipe.java:310)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.createResponsePacket(HttpTransportPipe.java:259)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.process(HttpTransportPipe.java:217)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.processRequest(HttpTransportPipe.java:130)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.DeferredTransportPipe.processRequest(DeferredTransportPipe.java:95)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.__doRun(Fiber.java:1121)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber._doRun(Fiber.java:1035)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.doRun(Fiber.java:1004)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.runSync(Fiber.java:862)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.Stub.process(Stub.java:448)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SEIStub.doProcess(SEIStub.java:178)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SyncMethodHandler.invoke(SyncMethodHandler.java:93)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SyncMethodHandler.invoke(SyncMethodHandler.java:77)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SEIStub.invoke(SEIStub.java:147)"
+1.60088E+12	"	at com.sun.proxy.$Proxy30.updateOffender(Unknown Source)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.SOAPMessageHandler.sendSOAPRequest(SOAPMessageHandler.java:89)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.createAndSendSOAPMessages(FileImporter.java:394)"
+1.60088E+12	"	... 2 more"
+1.60088E+12	 INFO  2020-September-23 16:56:03,789 PrisonDataTransferLogger:121 - Data transferred successfully for prison : UKI
+1.60088E+12	 INFO  2020-September-23 16:56:13,253 PrisonDataTransferLogger:121 - Data transferred successfully for prison : UPI
+1.60088E+12	 INFO  2020-September-23 16:56:41,169 PrisonDataTransferLogger:121 - Data transferred successfully for prison : VEI
+1.60088E+12	 INFO  2020-September-23 16:57:05,423 PrisonDataTransferLogger:121 - Data transferred successfully for prison : WCI
+1.60088E+12	 INFO  2020-September-23 16:57:21,605 PrisonDataTransferLogger:121 - Data transferred successfully for prison : WDI
+1.60088E+12	 INFO  2020-September-23 16:57:59,902 PrisonDataTransferLogger:121 - Data transferred successfully for prison : WEI
+1.60088E+12	 INFO  2020-September-23 16:58:26,429 PrisonDataTransferLogger:121 - Data transferred successfully for prison : WHI
+1.60088E+12	 INFO  2020-September-23 16:58:34,262 PrisonDataTransferLogger:121 - Data transferred successfully for prison : WII
+1.60088E+12	 INFO  2020-September-23 16:59:28,288 PrisonDataTransferLogger:121 - Data transferred successfully for prison : WLI
+1.60088E+12	 INFO  2020-September-23 17:00:18,804 PrisonDataTransferLogger:121 - Data transferred successfully for prison : WMI
+1.60088E+12	 INFO  2020-September-23 17:00:22,392 PrisonDataTransferLogger:121 - Data transferred successfully for prison : WNI
+1.60088E+12	 INFO  2020-September-23 17:00:47,750 PrisonDataTransferLogger:121 - Data transferred successfully for prison : WRI
+1.60088E+12	 INFO  2020-September-23 17:01:45,476 PrisonDataTransferLogger:121 - Data transferred successfully for prison : WSI
+1.60088E+12	 INFO  2020-September-23 17:02:02,018 PrisonDataTransferLogger:121 - Data transferred successfully for prison : WTI
+1.60088E+12	 INFO  2020-September-23 17:03:02,053 PrisonDataTransferLogger:121 - Error processing data for prison : WWI
+1.60088E+12	 FATAL 2020-September-23 17:03:02,053 PrisonDataTransferLogger:50 - Unable to send the SOAP request to DSS Web Service
+1.60088E+12	uk.co.bconline.ndelius.dss.fileimporter.exception.FileImporterException: Unable to send the SOAP request to DSS Web Service
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.createAndSendSOAPMessages(FileImporter.java:409)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.execute(FileImporter.java:194)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.main(FileImporter.java:115)"
+1.60088E+12	Caused by: com.sun.xml.internal.ws.client.ClientTransportException: The server sent HTTP status code 504: Gateway Time-out
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.checkStatusCode(HttpTransportPipe.java:310)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.createResponsePacket(HttpTransportPipe.java:259)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.process(HttpTransportPipe.java:217)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.processRequest(HttpTransportPipe.java:130)"
+1.60088E+12	"	at com.sun.xml.internal.ws.transport.DeferredTransportPipe.processRequest(DeferredTransportPipe.java:95)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.__doRun(Fiber.java:1121)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber._doRun(Fiber.java:1035)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.doRun(Fiber.java:1004)"
+1.60088E+12	"	at com.sun.xml.internal.ws.api.pipe.Fiber.runSync(Fiber.java:862)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.Stub.process(Stub.java:448)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SEIStub.doProcess(SEIStub.java:178)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SyncMethodHandler.invoke(SyncMethodHandler.java:93)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SyncMethodHandler.invoke(SyncMethodHandler.java:77)"
+1.60088E+12	"	at com.sun.xml.internal.ws.client.sei.SEIStub.invoke(SEIStub.java:147)"
+1.60088E+12	"	at com.sun.proxy.$Proxy30.updateOffender(Unknown Source)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.SOAPMessageHandler.sendSOAPRequest(SOAPMessageHandler.java:89)"
+1.60088E+12	"	at uk.co.bconline.ndelius.dss.fileimporter.FileImporter.createAndSendSOAPMessages(FileImporter.java:394)"
+1.60088E+12	"	... 2 more"
+1.60088E+12	 INFO  2020-September-23 17:03:12,821 PrisonDataTransferLogger:121 - Data transferred successfully for prison : WYI
+1.60088E+12	 INFO  2020-September-23 17:03:12,833 PrisonDataTransferLogger:121 - Consolidated Prison File processed - application terminating.
+1.60088E+12	FT Result == 0
