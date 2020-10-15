@@ -23,7 +23,7 @@ See the docs in [Confluence](https://dsdmoj.atlassian.net/wiki/spaces/DAM/pages/
 ### Building the Dockerfile
 
 - Currently the Dockerfile is built by Jenkins Job [Jenkins > Delius-Core > DSS/ > HMPPS DSS Docker Image Build](https://jenkins.engineering-dev.probation.hmpps.dsd.io/job/Delius-Core/job/DSS/job/HMPPS%20DSS%20Docker%20Image%20Build/)
-- New AWS CodeBuild Project will be created soon to deprecate this job. (Update this to link to new Project)
+- New AWS CodeBuild Project to build this image is at https://eu-west-2.console.aws.amazon.com/codesuite/codebuild/895523100917/projects/hmpps-delius-dss-offloc-docker/details?region=eu-west-2
   - task to create new Project https://jira.engineering-dev.probation.hmpps.dsd.io/browse/ALS-1788
 
 ### Deployment
