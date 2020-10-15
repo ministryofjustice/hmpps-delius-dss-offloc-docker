@@ -15,6 +15,11 @@ fi
 
 # Download versioned artefacts
 AWSCLI=$(which aws)
+#list current aws configuration
+$AWSCLI configure list
+$AWSCLI sts get-caller-identity
+
+$AWSCLI s3 ls s3://tf-eu-west-2-hmpps-eng-dev-delius-core-dependencies-s3bucket/dependencies/delius-core/NDelius-$DSS_VERSION/EIS/
 
 cd /dss_artefacts
 $AWSCLI s3 cp s3://tf-eu-west-2-hmpps-eng-dev-delius-core-dependencies-s3bucket/dependencies/delius-core/NDelius-$DSS_VERSION/EIS/NDelius-DSS-EncryptionUtility-$DSS_VERSION-EU.zip .
