@@ -16,6 +16,7 @@ fi
 # Download versioned artefacts
 AWSCLI=$(which aws)
 #list current aws configuration
+env
 $AWSCLI configure list
 $AWSCLI sts get-caller-identity
 
