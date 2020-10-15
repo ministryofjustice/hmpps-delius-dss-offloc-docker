@@ -39,7 +39,7 @@ RUN apk -v --no-cache --update add \
 USER tools
 
 COPY ./NDelius-DSS-EncryptionUtility-$DSS_VERSION-EU.zip /dss_artefacts/NDelius-DSS-EncryptionUtility-$DSS_VERSION-EU.zip
-COPY ./NDelius-$DSS_VERSION/EIS/NDelius-DSS-FileTransfer-$DSS_VERSION-FT.zip /dss_artefacts/NDelius-DSS-FileTransfer-$DSS_VERSION-FT.zip
+COPY ./NDelius-DSS-FileTransfer-$DSS_VERSION-FT.zip /dss_artefacts/NDelius-DSS-FileTransfer-$DSS_VERSION-FT.zip
 COPY ./test_file.zip /dss_artefacts/test_file.zip
 # TODO Workaround for FileImporter not following redirects issue
 COPY ./NDelius-DSS-FileImporter-3.0-FI.zip /dss_artefacts/NDelius-DSS-FileImporter-$DSS_VERSION-FI.zip
