@@ -40,14 +40,16 @@ build() {
 
 set_tag_version() {
   # $GITHUB_ACCESS_TOKEN passed in from BuildSpec from SSM Parameter Store
-  # $CommitId passed in from AWS CodePipeline
+  # $CODEBUILD_GIT_COMMIT passed in from AWS CodeBuild
 
-  TIMESTAMP=$(date +%F-%H-%M-%S)
-  echo "TIMESTAMP:${TIMESTAMP}"
+  
   if [[ "${CODEBUILD_GIT_BRANCH}" == "master" ]];then
     # get latest tag for commit sha
-    IMAGE_TAG_VERSION=$(curl -s -u hmpps-jenkins:$GITHUB_ACCESS_TOKEN https://api.github.com/repos/ministryofjustice/hmpps-delius-dss-offloc-docker/tags | jq -r --arg COMMITID "$CommitId" '[.[] | select(.commit.sha==$COMMITID)][0].name')
+    IMAGE_TAG_VERSION=$(curl -s -u hmpps-jenkins:$GITHUB_ACCESS_TOKEN https://api.github.com/repos/ministryofjustice/hmpps-delius-dss-offloc-docker/tags | jq -r --arg CODEBUILD_GIT_COMMIT "$CODEBUILD_GIT_COMMIT" '[.[] | select(.commit.sha==$CODEBUILD_GIT_COMMIT)][0].name')
   else
+    echo 'not master branch so we set timestamped alpha tag'
+    TIMESTAMP=$(date +%F-%H-%M-%S)
+    echo "TIMESTAMP:${TIMESTAMP}"
     IMAGE_TAG_VERSION="0.0.0-${TIMESTAMP}-alpha" 
   fi
   echo "Setting Tag to ${IMAGE_TAG_VERSION}"
@@ -107,7 +109,7 @@ push_image() {
 
   if [[ "${CODEBUILD_GIT_BRANCH}" == "master" ]];then
     echo '--------------------------------------------------------'
-    printf '--- On master branch so pushing latest tag as well ---'
+    echo '--- On master branch so pushing latest tag as well ---'
     echo '--------------------------------------------------------'
     docker tag "${IMAGE_NAME}:latest" "${REGISTRY:?}/${IMAGE_NAME}:latest"
     docker tag "${IMAGE_NAME}:latest" "${PUBLIC_IMAGE}:latest"
