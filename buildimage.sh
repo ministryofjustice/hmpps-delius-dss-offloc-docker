@@ -28,9 +28,9 @@ docker_hub_login() {
 
 build() {
     echo '----------------------------------------------'
-    echo "build($1)"
+    echo "build()"
     echo '----------------------------------------------'
-    if [[ "${BRANCH_NAME}" == "master" ]];then
+    if [[ "${CODEBUILD_GIT_BRANCH}" == "master" ]];then
         #Always force a clean build on master
         make build  dss_version=${DSS_VERSION} image_tag_version=${IMAGE_TAG_VERSION} no-cache=--no-cache
     else
@@ -44,7 +44,7 @@ set_tag_version() {
 
   TIMESTAMP=$(date +%F-%H-%M-%S)
   echo "TIMESTAMP:${TIMESTAMP}"
-  if [[ "${BRANCH_NAME}" == "master" ]];then
+  if [[ "${CODEBUILD_GIT_BRANCH}" == "master" ]];then
     # get latest tag for commit sha
     IMAGE_TAG_VERSION=$(curl -s -u hmpps-jenkins:$GITHUB_ACCESS_TOKEN https://api.github.com/repos/ministryofjustice/hmpps-delius-dss-offloc-docker/tags | jq -r --arg COMMITID "$CommitId" '[.[] | select(.commit.sha==$COMMITID)][0].name')
   else
@@ -77,15 +77,17 @@ docker_push() {
 
 push_image() {
   echo '----------------------------------------------'
-  echo "push_image($1)"
+  echo "push_image()"
   echo '----------------------------------------------'
-  IMAGE_NAME="hmpps/${1}"
-  PUBLIC_IMAGE="mojdigitalstudio/hmpps-${1}"
+  IMAGE_NAME="hmpps/dss"
+  PUBLIC_IMAGE="mojdigitalstudio/hmpps-dss"
   
-  echo "REGISTRY: ${REGISTRY:?}"
-  echo "IMAGE_NAME: ${IMAGE_NAME}"
+  echo '-------------------------------'
+  echo "REGISTRY         : ${REGISTRY:?}"
+  echo "IMAGE_NAME       : ${IMAGE_NAME}"
   echo "IMAGE_TAG_VERSION: ${IMAGE_TAG_VERSION}"
-  echo "PUBLIC_IMAGE: ${PUBLIC_IMAGE}"
+  echo "PUBLIC_IMAGE     : ${PUBLIC_IMAGE}"
+  echo '-------------------------------'
 
   echo "docker tag ${REGISTRY:?}/${IMAGE_NAME}:latest ${REGISTRY:?}/${IMAGE_NAME}:${IMAGE_TAG_VERSION}"
   docker tag "${REGISTRY:?}/${IMAGE_NAME}:latest" "${REGISTRY:?}/${IMAGE_NAME}:${IMAGE_TAG_VERSION}"
@@ -103,7 +105,7 @@ push_image() {
   echo '----------------------------------------------'
   docker_push "${PUBLIC_IMAGE}" "${IMAGE_TAG_VERSION}"
 
-  if [[ "${BRANCH_NAME}" == "master" ]];then
+  if [[ "${CODEBUILD_GIT_BRANCH}" == "master" ]];then
     echo '--------------------------------------------------------'
     printf '--- On master branch so pushing latest tag as well ---'
     echo '--------------------------------------------------------'
@@ -206,9 +208,9 @@ function validate_image() {
   fi
 
   # if branch is master, is tag sha256 same as latest sha256
-  if [ "${BRANCH_NAME}" == "master" ]; then
+  if [ "${CODEBUILD_GIT_BRANCH}" == "master" ]; then
       
-      echo "Branch is ${BRANCH_NAME} so checking for sha256 for Tag '${IMAGE_TAG_VERSION}' is the same as sha256 for 'latest' tag for image"
+      echo "Branch is ${CODEBUILD_GIT_BRANCH} so checking for sha256 for Tag '${IMAGE_TAG_VERSION}' is the same as sha256 for 'latest' tag for image"
 
       ecr_sha_latest=$(get_ecr_image_by_tag "${IMAGE_NAME}" 'latest')
       dockerhub_sha_latest=$(get_dockerhub_image_by_tag "${PUBLIC_IMAGE}" 'latest')
@@ -240,7 +242,7 @@ function validate_image() {
           exit 1
       fi 
   else 
-      echo "Branch is ${BRANCH_NAME} so skipping check for current tag == latest"
+      echo "Branch is ${CODEBUILD_GIT_BRANCH} so skipping check for current tag == latest"
   fi
 
 }
@@ -258,10 +260,10 @@ ecr_login
 docker_hub_login
 
 #build the image
-build ${1}
+build
 
 #push the image to ECR and Docker Hub
-push_image ${1}
+push_image
 
 # VALIDATE THE IMAGES WERE PUSHED TO THE ECR AND DOCKER HUB BY CONFIRMING THE IMAGE EXISTS FOR THE TAG IN BOTH REPOS
 # validate_image
