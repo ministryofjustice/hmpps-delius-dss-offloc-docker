@@ -261,6 +261,10 @@ ecr_login
 # login to docker hub
 docker_hub_login
 
+#list current aws configuration
+aws configure list
+aws sts get-caller-identity
+
 #build the image
 build
 
