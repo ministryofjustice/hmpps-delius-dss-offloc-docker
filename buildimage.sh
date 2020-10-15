@@ -262,8 +262,9 @@ ecr_login
 docker_hub_login
 
 #list current aws configuration
-/usr/bin/aws configure list
-/usr/bin/aws sts get-caller-identity
+AWSCLI=$(which aws)
+$AWSCLI configure list
+$AWSCLI sts get-caller-identity
 
 #build the image
 build
