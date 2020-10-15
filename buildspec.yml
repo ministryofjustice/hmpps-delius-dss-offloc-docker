@@ -11,6 +11,6 @@ env:
 phases:
   build:
     commands:
-      - ${CODEBUILD_SRC_DIR}/copy_artifacts.sh
+      - ${CODEBUILD_SRC_DIR}/scripts/copy_artifacts.sh
       - ${CODEBUILD_SRC_DIR}/buildimage.sh
   
