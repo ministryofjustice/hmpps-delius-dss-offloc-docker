@@ -19,12 +19,12 @@ ecr_login() {
   eval $(aws --region eu-west-2 ecr get-login --no-include-email)
 }
 
-docker_hub_login() {
-  echo '----------------------------------------------'
-  echo "docker_hub_login()"
-  echo '----------------------------------------------'
-  docker login -u `aws ssm get-parameters --names /jenkins/dockerhub/username --region eu-west-2 | jq -r '.Parameters[0].Value'` -p `aws ssm get-parameters --names /jenkins/dockerhub/password --with-decryption --region eu-west-2 | jq -r '.Parameters[0].Value'`
-}
+# docker_hub_login() {
+#   echo '----------------------------------------------'
+#   echo "docker_hub_login()"
+#   echo '----------------------------------------------'
+#   docker login -u `aws ssm get-parameters --names /jenkins/dockerhub/username --region eu-west-2 | jq -r '.Parameters[0].Value'` -p `aws ssm get-parameters --names /jenkins/dockerhub/password --with-decryption --region eu-west-2 | jq -r '.Parameters[0].Value'`
+# }
 
 build() {
     echo '----------------------------------------------'
@@ -82,39 +82,39 @@ push_image() {
   echo "push_image()"
   echo '----------------------------------------------'
   IMAGE_NAME="hmpps/dss"
-  PUBLIC_IMAGE="mojdigitalstudio/hmpps-dss"
+  # PUBLIC_IMAGE="mojdigitalstudio/hmpps-dss"
   
   echo '-------------------------------'
   echo "REGISTRY         : ${REGISTRY:?}"
   echo "IMAGE_NAME       : ${IMAGE_NAME}"
   echo "IMAGE_TAG_VERSION: ${IMAGE_TAG_VERSION}"
-  echo "PUBLIC_IMAGE     : ${PUBLIC_IMAGE}"
+  # echo "PUBLIC_IMAGE     : ${PUBLIC_IMAGE}"
   echo '-------------------------------'
 
   echo "docker tag ${REGISTRY:?}/${IMAGE_NAME}:latest ${REGISTRY:?}/${IMAGE_NAME}:${IMAGE_TAG_VERSION}"
   docker tag "${REGISTRY:?}/${IMAGE_NAME}:latest" "${REGISTRY:?}/${IMAGE_NAME}:${IMAGE_TAG_VERSION}"
   
-  echo "docker tag ${REGISTRY:?}/${IMAGE_NAME}:latest ${PUBLIC_IMAGE}:${IMAGE_TAG_VERSION}"
-  docker tag "${REGISTRY:?}/${IMAGE_NAME}:latest" "${PUBLIC_IMAGE}:${IMAGE_TAG_VERSION}"
+  # echo "docker tag ${REGISTRY:?}/${IMAGE_NAME}:latest ${PUBLIC_IMAGE}:${IMAGE_TAG_VERSION}"
+  # docker tag "${REGISTRY:?}/${IMAGE_NAME}:latest" "${PUBLIC_IMAGE}:${IMAGE_TAG_VERSION}"
   
   echo '----------------------------------------------'
   echo "--- Pushing Private ECR Image ${IMAGE_NAME}:${IMAGE_TAG_VERSION} to registry ---"
   echo '----------------------------------------------'
   docker_push "${REGISTRY:?}/${IMAGE_NAME}" "${IMAGE_TAG_VERSION}"
 
-  echo '----------------------------------------------'
-  echo "--- Pushing Public Docker Hub public Image ${PUBLIC_IMAGE}:${IMAGE_TAG_VERSION} to registry ---"
-  echo '----------------------------------------------'
-  docker_push "${PUBLIC_IMAGE}" "${IMAGE_TAG_VERSION}"
+  # echo '----------------------------------------------'
+  # echo "--- Pushing Public Docker Hub public Image ${PUBLIC_IMAGE}:${IMAGE_TAG_VERSION} to registry ---"
+  # echo '----------------------------------------------'
+  # docker_push "${PUBLIC_IMAGE}" "${IMAGE_TAG_VERSION}"
 
   if [[ "${CODEBUILD_GIT_BRANCH}" == "master" ]];then
     echo '--------------------------------------------------------'
     echo '--- On master branch so pushing latest tag as well ---'
     echo '--------------------------------------------------------'
     docker tag "${IMAGE_NAME}:latest" "${REGISTRY:?}/${IMAGE_NAME}:latest"
-    docker tag "${IMAGE_NAME}:latest" "${PUBLIC_IMAGE}:latest"
     docker_push "${REGISTRY:?}/${IMAGE_NAME}" "latest"
-    docker_push "${PUBLIC_IMAGE}" "latest"
+    # docker tag "${IMAGE_NAME}:latest" "${PUBLIC_IMAGE}:latest"
+    # docker_push "${PUBLIC_IMAGE}" "latest"
   fi
 }
 
@@ -188,26 +188,26 @@ function validate_image() {
   ecr_sha_tag=$(get_ecr_image_by_tag "${IMAGE_NAME}" "${IMAGE_TAG_VERSION}")
   echo "ecr_sha_tag:$ecr_sha_tag"
 
-  echo '--------------------------------------------------------------------'
-  echo "get docker hub sha256 for repository-name '"${PUBLIC_IMAGE}"' Tag '${IMAGE_TAG_VERSION}'"
-  echo '--------------------------------------------------------------------'
-  dockerhub_sha_tag=$(get_dockerhub_image_by_tag ""${PUBLIC_IMAGE}"" "${IMAGE_TAG_VERSION}")
-  echo "dockerhub_sha_tag:$dockerhub_sha_tag"
+  # echo '--------------------------------------------------------------------'
+  # echo "get docker hub sha256 for repository-name '"${PUBLIC_IMAGE}"' Tag '${IMAGE_TAG_VERSION}'"
+  # echo '--------------------------------------------------------------------'
+  # dockerhub_sha_tag=$(get_dockerhub_image_by_tag ""${PUBLIC_IMAGE}"" "${IMAGE_TAG_VERSION}")
+  # echo "dockerhub_sha_tag:$dockerhub_sha_tag"
 
   # CONFIRM THE TAG sha256 IS THE SAME IN BOTH ECR AND DOCKER HUB REPOS
-  echo '--------------------------------------------------------------------'
-  echo "Check ECR sha256 is same as docker hub sha256 for repository-name '${PUBLIC_IMAGE}' Tag '${IMAGE_TAG_VERSION}' image"
-  echo '--------------------------------------------------------------------'
-  if [ "${ecr_sha_tag}" == "${dockerhub_sha_tag}" ]; then
-      echo '------------------------------------------------------------------Success'
-      echo 'ECR sha256 is same as docker hub sha256 for repository-name '${PUBLIC_IMAGE}' Tag '${IMAGE_TAG_VERSION}' image'
-      echo '---------------------------------------------------------------------------'
-  else
-      echo '***********************************************************************************ERROR'
-      echo 'ECR sha256 is not the same as docker hub sha256 for repository-name '${PUBLIC_IMAGE}' Tag '${IMAGE_TAG_VERSION}' image'
-      echo '****************************************************************************************'
-      exit 1
-  fi
+  # echo '--------------------------------------------------------------------'
+  # echo "Check ECR sha256 is same as docker hub sha256 for repository-name '${PUBLIC_IMAGE}' Tag '${IMAGE_TAG_VERSION}' image"
+  # echo '--------------------------------------------------------------------'
+  # if [ "${ecr_sha_tag}" == "${dockerhub_sha_tag}" ]; then
+  #     echo '------------------------------------------------------------------Success'
+  #     echo 'ECR sha256 is same as docker hub sha256 for repository-name '${PUBLIC_IMAGE}' Tag '${IMAGE_TAG_VERSION}' image'
+  #     echo '---------------------------------------------------------------------------'
+  # else
+  #     echo '***********************************************************************************ERROR'
+  #     echo 'ECR sha256 is not the same as docker hub sha256 for repository-name '${PUBLIC_IMAGE}' Tag '${IMAGE_TAG_VERSION}' image'
+  #     echo '****************************************************************************************'
+  #     exit 1
+  # fi
 
   # if branch is master, is tag sha256 same as latest sha256
   if [ "${CODEBUILD_GIT_BRANCH}" == "master" ]; then
@@ -215,7 +215,7 @@ function validate_image() {
       echo "Branch is ${CODEBUILD_GIT_BRANCH} so checking for sha256 for Tag '${IMAGE_TAG_VERSION}' is the same as sha256 for 'latest' tag for image"
 
       ecr_sha_latest=$(get_ecr_image_by_tag "${IMAGE_NAME}" 'latest')
-      dockerhub_sha_latest=$(get_dockerhub_image_by_tag "${PUBLIC_IMAGE}" 'latest')
+      # dockerhub_sha_latest=$(get_dockerhub_image_by_tag "${PUBLIC_IMAGE}" 'latest')
 
       echo "ecr_sha_latest:$ecr_sha_latest"
 
@@ -230,19 +230,19 @@ function validate_image() {
           exit 1
       fi 
 
-      echo "dockerhub_sha_latest:$dockerhub_sha_latest"
+      # echo "dockerhub_sha_latest:$dockerhub_sha_latest"
 
-      # if branch is master, is tag sha256 same as latest sha256
-      if [ "${dockerhub_sha_tag}" == "${dockerhub_sha_latest}" ]; then
-          echo '---------------------------------------------------------------------------Success'
-          echo 'Docker Hub sha256 is the same so we built and pushed both images correctly'
-          echo '---------------------------------------------------------------------------'
-      else
-          echo '****************************************************************************************ERROR'
-          echo 'Docker Hub sha256 is not the same so an error occurred building image or pushing an image correctly'
-          echo '****************************************************************************************'
-          exit 1
-      fi 
+      # # if branch is master, is tag sha256 same as latest sha256
+      # if [ "${dockerhub_sha_tag}" == "${dockerhub_sha_latest}" ]; then
+      #     echo '---------------------------------------------------------------------------Success'
+      #     echo 'Docker Hub sha256 is the same so we built and pushed both images correctly'
+      #     echo '---------------------------------------------------------------------------'
+      # else
+      #     echo '****************************************************************************************ERROR'
+      #     echo 'Docker Hub sha256 is not the same so an error occurred building image or pushing an image correctly'
+      #     echo '****************************************************************************************'
+      #     exit 1
+      # fi 
   else 
       echo "Branch is ${CODEBUILD_GIT_BRANCH} so skipping check for current tag == latest"
   fi
@@ -273,6 +273,6 @@ build
 push_image
 
 # VALIDATE THE IMAGES WERE PUSHED TO THE ECR AND DOCKER HUB BY CONFIRMING THE IMAGE EXISTS FOR THE TAG IN BOTH REPOS
-# validate_image
+validate_image
 
 exit 0
