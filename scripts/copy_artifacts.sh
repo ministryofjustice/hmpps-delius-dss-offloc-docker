@@ -28,8 +28,8 @@ $AWSCLI s3 cp s3://tf-eu-west-2-hmpps-eng-dev-delius-core-dependencies-s3bucket/
 $AWSCLI s3 cp s3://tf-eu-west-2-hmpps-eng-dev-delius-core-dependencies-s3bucket/dependencies/delius-core/NDelius-$DSS_VERSION/EIS/NDelius-DSS-FileTransfer-$DSS_VERSION-FT.zip .
 $AWSCLI s3 cp s3://tf-eu-west-2-hmpps-eng-dev-delius-core-dependencies-s3bucket/dependencies/delius-core/OFFLOC/test_file.zip .
 # TODO Workaround for FileImporter not following redirects issue
-#$AWSCLI s3 cp s3://tf-eu-west-2-hmpps-eng-dev-delius-core-dependencies-s3bucket/dependencies/delius-core/NDelius-$DSS_VERSION/EIS/NDelius-DSS-FileImporter-$DSS_VERSION-FI.zip .
-$AWSCLI s3 cp s3://tf-eu-west-2-hmpps-eng-dev-delius-core-dependencies-s3bucket/dependencies/delius-core/OFFLOC/NDelius-DSS-FileImporter-3.0-FI.zip NDelius-DSS-FileImporter-$DSS_VERSION-FI.zip
+$AWSCLI s3 cp s3://tf-eu-west-2-hmpps-eng-dev-delius-core-dependencies-s3bucket/dependencies/delius-core/NDelius-$DSS_VERSION/EIS/NDelius-DSS-FileImporter-$DSS_VERSION-FI.zip .
+#$AWSCLI s3 cp s3://tf-eu-west-2-hmpps-eng-dev-delius-core-dependencies-s3bucket/dependencies/delius-core/OFFLOC/NDelius-DSS-FileImporter-3.0-FI.zip NDelius-DSS-FileImporter-$DSS_VERSION-FI.zip
 
 ls -al 
 
